@@ -1,0 +1,113 @@
+{{#extend "css"}}
+    <link href="/tools/jQuery-contextMenu/dist/jquery.contextMenu.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/tools/bootstrap-fileinput/css/fileinput.min.css"/>
+
+    <style>
+        #qr-image{
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+
+        }
+        #qr-image img{
+            margin: auto;
+            display: block;
+        }
+    </style>
+{{/extend}}
+<div class="page-header border-bottom-0">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><i class="fad fa-chalkboard-teacher fa-lg"></i> <span class="font-weight-semibold">CARRERAS</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="header-elements mb-3 mb-md-0">
+            <div class="d-flex justify-content-center">
+                <button id="btnCreate" type="button" class="btn btn-success d-inline-block border-left-1">
+                    NUEVO <i class="fad fa-plus-circle fa-lg fa-fw"></i>
+                </button>
+                <button id="btnEdit" type="button" class="btn btn-warning d-inline-block border-left-1" disabled>
+                    EDITAR <i class="fad fa-edit fa-lg fa-fw"></i>
+                </button>
+                <button id="btnDelete" type="button" class="btn bg-pink-400 d-inline-block border-left-1" disabled>
+                    ELIMINAR <i class="fad fa-trash fa-lg fa-fw"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content pt-0">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Listado de carreras</h5>
+        </div>
+
+        <div class="card-body">
+            Listado de <code>Carreras</code> aquí pueden crear, editar y eliminar las carreras disponibles para los alumnos del establecimiento.
+        </div>
+        <table id="crud-datatable" class="table table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th class="pk">ID</th>
+                <th class="name">NOMBRE</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div id="modal-crud" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORMULARIO DE CARRERAS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="crud-form">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="name">NOMBRE</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Ingrese Nombre" required>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnSave" type="button" class="btn btn-primary">Guardar</button>
+                <button id="btnUpdate" type="button" class="btn bg-warning d-none">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{#extend "js"}}
+    <script type="text/javascript" src="/tools/parsleyjs/dist/parsley.min.js"></script>
+    <script type="text/javascript" src="/tools/parsleyjs/dist/i18n/es.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/forms/selects/select2.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/select.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+    <script type="text/javascript" src="/public/global/js/datetime-dayjs.js"></script>
+    <script type="text/javascript" src="/tools/uniform/jquery.uniform.min.js "></script>
+    <script type="text/javascript" src="/tools/pnotify/dist/pnotify.js "></script>
+    <script type="text/javascript" src="/tools/select2/dist/js/select2.min.js "></script>
+    <script type="text/javascript" src="/public/assets/js/plugins/forms/styling/switch.min.js "></script>
+    <script type="text/javascript" src="/tools/bootstrap-multiselect/dist/js/bootstrap-multiselect.js "></script>
+    <script type="text/javascript" src="/public/global/js/extend_datatables.js"></script>
+
+    <script>let datatable;</script>
+
+    <script type="text/javascript" src="/public/app/courses/js/controller.js"></script>
+    <script type="text/javascript" src="/public/app/courses/js/datatables.js"></script>
+    <script type="text/javascript" src="/public/app/courses/js/main.js"></script>
+{{/extend}}

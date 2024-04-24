@@ -1,0 +1,971 @@
+<!-- Main sidebar -->
+<div class="sidebar sidebar-dark sidebar-main sidebar-expand-md" style="background: #3c3c3c !important;">
+
+    <!-- Sidebar mobile toggler -->
+    <div class="sidebar-mobile-toggler text-center">
+        <a href="#" class="sidebar-mobile-main-toggle">
+            <i class="icon-arrow-left8"></i>
+        </a>
+        Navigation
+        <a href="#" class="sidebar-mobile-expand">
+            <i class="icon-screen-full"></i>
+            <i class="icon-screen-normal"></i>
+        </a>
+    </div>
+    <!-- /sidebar mobile toggler -->
+
+
+    <!-- Sidebar content -->
+    <div class="sidebar-content">
+        <!-- Main navigation -->
+        <div class="card card-sidebar-mobile">
+            <ul class="nav nav-sidebar" data-nav-type="accordion">
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">PRINCIPAL</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link"><i class="icon-home4"></i><span>INICIO</span></a>
+                </li>
+                {{#findRole credentials.role.name "AUDITOR" ""}}
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">Dashboard</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/charts" class="nav-link"><i class="fas fa-chart-bar"></i><span>GRÁFICOS</span></a>
+                </li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "GESTOR" ""}}
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">Dashboard</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/charts" class="nav-link"><i class="fas fa-chart-bar"></i><span>GRÁFICOS</span></a>
+                </li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "ADMINISTRADOR" ""}}
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">Dashboard</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/charts" class="nav-link"><i class="fas fa-chart-bar"></i><span>GRÁFICOS</span></a>
+                </li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "AUDITOR" ""}}
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">ADMINISTRACIÓN</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-cog fa-lg"></i>
+                        <span>MANTENEDORES</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Instituciones">
+                        <li class="nav-item">
+                            <a href="/activities" class="nav-link">ACTIVIDADES</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿QUIENES SOMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/institution" class="nav-link"><i
+                            class="fas fa-building fa-lg"></i><span>INSTITUCIÓN</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/people/teachers" class="nav-link"><i
+                            class="fad fa-graduation-cap fa-lg"></i><span>DOCENTES</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/miper" class="nav-link"><i class="fas fa-exclamation-square"></i><span>MIPER</span></a>
+                </li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿CUMPLIMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-gavel"></i>
+                        <span>ASPECTOS LEGALES</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/record" class="nav-link">ANTECEDENTES</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/environmentTerrain" class="nav-link">ENTORNO Y TERRENO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/ergonomics" class="nav-link">ERGONOMÍA</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="InstalacionesElectricasYGas">
+                        <li class="nav-item">
+                            <a href="/electricalGasInstallations" class="nav-link">INSTALACIONES ELÉCTRICAS Y GAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="InstalacionesSanitarias">
+                        <li class="nav-item">
+                            <a href="/sanitaryInstallations" class="nav-link">INSTALACIONES SANITARIAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PlantaFisica">
+                        <li class="nav-item">
+                            <a href="/physicalPlant" class="nav-link">PLANTA FÍSICA</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PlantaFisica">
+                        <li class="nav-item">
+                            <a href="/illumination" class="nav-link">ILUMINACIÓN</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="OrdenYAseo">
+                        <li class="nav-item">
+                            <a href="/orderCleanliness" class="nav-link">ORDEN Y ASEO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Accesos">
+                        <li class="nav-item">
+                            <a href="/access" class="nav-link">ACCESOS <h6 id="hola"></h6></a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="CirculacionYCrucesPeatonales">
+                        <li class="nav-item">
+                            <a href="/circulationCrosswalk" class="nav-link">CIRCULACIÓN Y CRUCES PEATONALES</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Estacionamientos">
+                        <li class="nav-item">
+                            <a href="/parkingLots" class="nav-link">ESTACIONAMIENTOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="SenalizacionYTransito">
+                        <li class="nav-item">
+                            <a href="/signalingTransit" class="nav-link">SEÑALIZACIÓN Y TRANSITO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Cocinas">
+                        <li class="nav-item">
+                            <a href="/kitchens" class="nav-link">COCINAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PrimerosAuxilios">
+                        <li class="nav-item">
+                            <a href="/firstAid" class="nav-link">PRIMEROS AUXILIOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="SeguridadContraIncendios">
+                        <li class="nav-item">
+                            <a href="/fireSafety" class="nav-link">SEGURIDAD CONTRA INCENDIOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ViasDeEscape">
+                        <li class="nav-item">
+                            <a href="/escapeRoutes" class="nav-link">VÍAS DE ESCAPE</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ViasDeEscape">
+                        <li class="nav-item">
+                            <a href="/games" class="nav-link">JUEGOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Laboratorio">
+                        <li class="nav-item">
+                            <a href="/lab" class="nav-link">LABORATORIO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EPPEnsenanzaTecnicoProfesionalPersonas">
+                        <li class="nav-item">
+                            <a href="/teachingTechnicalProfessionalPerson" class="nav-link">EPP ENSEÑANZA TÉCNICO
+                                PEROFESIONAL - PERSONA</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EPPEnsenanzaTecnicoProfesionalMaquinarias">
+                        <li class="nav-item">
+                            <a href="/teachingTechnicalProfessionalMachinery" class="nav-link">EPP ENSEÑANZA TÉCNICO
+                                PEROFESIONAL - MAQUINARIAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="AuditLey16744">
+                        <li class="nav-item">
+                            <a href="/auditLey16744" class="nav-link">AUDITORIA ORGANISMO ADMINISTRADOR LEY 16.744</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-medkit"></i>
+                        <span>PROTOCOLOS MINSAL</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloTMERT">
+                        <li class="nav-item">
+                            <a href="/protocolTMERT" class="nav-link">PROTOCOLO TMERT</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloMMC">
+                        <li class="nav-item">
+                            <a href="/protocolMMC" class="nav-link">PROTOCOLO MMC</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloEsfuerzoVocal">
+                        <li class="nav-item">
+                            <a href="/vocalEffortProtocol" class="nav-link">PROTOCOLO ESFUERZO VOCAL</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloRadiacionUV">
+                        <li class="nav-item">
+                            <a href="/uvRadiationProtocol" class="nav-link">PROTOCOLO RADIACIÓN UV</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloPsicosocial">
+                        <li class="nav-item">
+                            <a href="/psychosocialProtocol" class="nav-link">PROTOCOLO PSICOSOCIAL</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/emergencyPlan" class="nav-link"><i class="fas fa-shield-check"></i>
+                        <span>PISE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/schoolBrigade" class="nav-link"><i class="fas fa-first-aid"></i>
+                        <span>BRIGADA ESCOLAR</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/parityGroup" class="nav-link"><i class="fas fa-siren-on"></i>
+                        <span>COMITÉ PARITARIO</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/securityMonitor" class="nav-link"><i class="fas fa-user-shield"></i>
+                        <span>MONITOR DE SEGURIDAD</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/covid19" class="nav-link"><i class="fas fa-stethoscope"></i>
+                        <span>COVID-19</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/people/contractors" class="nav-link"><i
+                            class="fas fa-address-book fa-lg"></i><span>CONTRATISTAS</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/accidents" class="nav-link"><i class="fas fa-ban fa-lg"></i><span>NÓMINA
+                            ACCIDENTES</span></a>
+                </li>
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿PLANIFIQUEMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/activitiesControl" class="nav-link"><i class="fas fa-list-alt"></i>
+                        <span>ACTIVIDADES</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/activitiesSafetySchool" class="nav-link"><i class="fas fa-list-alt"></i>
+                        <span>ACTIVIDADES SAFETY SCHOOL</span>
+                    </a>
+                </li>
+                <li class="navigation-divider"></li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "ADMINISTRADOR" ""}}
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">ADMINISTRACIÓN</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-cog fa-lg"></i>
+                        <span>MANTENEDORES</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="Instituciones">
+                        <li class="nav-item">
+                            <a href="/users" class="nav-link">USUARIOS</a>
+                        </li>
+                        <li class="nav-item-divider"></li>
+                        <li class="nav-item">
+                            <a href="/activities" class="nav-link">ACTIVIDADES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/roles" class="nav-link">ROLES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/permissions" class="nav-link">PERMISOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/institution2" class="nav-link"></i>
+                                <span>INSTITUCIÓN</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿QUIENES SOMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/institution" class="nav-link"><i
+                            class="fas fa-building fa-lg"></i><span>INSTITUCIÓN</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/people/teachers" class="nav-link"><i
+                            class="fad fa-graduation-cap fa-lg"></i><span>DOCENTES</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/miper" class="nav-link"><i class="fas fa-exclamation-square"></i>
+                        <span>
+                            MIPER
+                            <span id="miper" class="badge badge-pill badge-success"
+                                style="position: relative; bottom: 2px;">
+                                0%
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿CUMPLIMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-gavel"></i>
+                        <span>ASPECTOS LEGALES</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/record" class="nav-link"><span>ANTECEDENTES <span id="antecedentes"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/environmentTerrain" class="nav-link"><span>ENTORNO Y TERRENO <span
+                                        id="entorno_y_terreno" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/ergonomics" class="nav-link"><span>ERGONOMÍA <span id="ergonomia"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="InstalacionesElectricasYGas">
+                        <li class="nav-item">
+                            <a href="/electricalGasInstallations" class="nav-link"><span>INSTALACIONES ELÉCTRICAS Y
+                                    GAS <span id="instalaciones_electricas_y_gas" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="InstalacionesSanitarias">
+                        <li class="nav-item">
+                            <a href="/sanitaryInstallations" class="nav-link"><span>INSTALACIONES SANITARIAS <span
+                                        id="instalaciones_sanitarias" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PlantaFisica">
+                        <li class="nav-item">
+                            <a href="/physicalPlant" class="nav-link">
+                                <span>
+                                    PLANTA FÍSICA <span id="planta_fisica" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PlantaFisica">
+                        <li class="nav-item">
+                            <a href="/illumination" class="nav-link"><span>ILUMINACIÓN <span id="iluminacion"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="OrdenYAseo">
+                        <li class="nav-item">
+                            <a href="/orderCleanliness" class="nav-link">
+                                <span>ORDEN Y ASEO <span id="orden_y_aseo" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Accesos">
+                        <li class="nav-item">
+                            <a href="/access" class="nav-link"><span>ACCESOS <span id="accesos"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="CirculacionYCrucesPeatonales">
+                        <li class="nav-item">
+                            <a href="/circulationCrosswalk" class="nav-link"><span>CIRCULACIÓN Y CRUCES PEATONALES <span
+                                        id="circulacion_y_cruces_peatonales" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Estacionamientos">
+                        <li class="nav-item">
+                            <a href="/parkingLots" class="nav-link"><span>ESTACIONAMIENTOS <span id="estacionamientos"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="SenalizacionYTransito">
+                        <li class="nav-item">
+                            <a href="/signalingTransit" class="nav-link"><span>SEÑALIZACIÓN Y TRANSITO <span
+                                        id="senalizacion_y_transito" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Cocinas">
+                        <li class="nav-item">
+                            <a href="/kitchens" class="nav-link"><span>COCINAS <span
+                                        id="cocinas_platos_preparados_que_requieren_o_no_coccion"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PrimerosAuxilios">
+                        <li class="nav-item">
+                            <a href="/firstAid" class="nav-link"><span>PRIMEROS AUXILIOS <span id="primeros_auxilios"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="SeguridadContraIncendios">
+                        <li class="nav-item">
+                            <a href="/fireSafety" class="nav-link"><span>SEGURIDAD CONTRA INCENDIOS <span
+                                        id="seguridad_contra_incendios" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ViasDeEscape">
+                        <li class="nav-item">
+                            <a href="/escapeRoutes" class="nav-link"><span>VÍAS DE ESCAPE <span id="vias_de_escape"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ViasDeEscape">
+                        <li class="nav-item">
+                            <a href="/games" class="nav-link"><span>JUEGOS <span id="juegos"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Laboratorio">
+                        <li class="nav-item">
+                            <a href="/lab" class="nav-link"><span>LABORATORIO <span id="laboratorio"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EPPEnsenanzaTecnicoProfesionalPersonas">
+                        <li class="nav-item">
+                            <a href="/teachingTechnicalProfessionalPerson" class="nav-link"><span>EPP ENSEÑANZA TÉCNICO
+                                    PEROFESIONAL - PERSONA <span id="epp_ensenanza_tecnico_profesional_-_personas"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EPPEnsenanzaTecnicoProfesionalMaquinarias">
+                        <li class="nav-item">
+                            <a href="/teachingTechnicalProfessionalMachinery" class="nav-link"><span>EPP ENSEÑANZA
+                                    TÉCNICO
+                                    PEROFESIONAL - MAQUINARIAS <span
+                                        id="epp_ensenanza_tecnico_profesional_-_maquinarias"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="AuditLey16744">
+                        <li class="nav-item">
+                            <a href="/auditLey16744" class="nav-link"><span>AUDITORIA ORGANISMO ADMINISTRADOR LEY 16.744
+                                    <span id="auditoria_organismo_administrador_ley_16_744"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-medkit"></i>
+                        <span>PROTOCOLOS MINSAL</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloTMERT">
+                        <li class="nav-item">
+                            <a href="/protocolTMERT" class="nav-link"><span>PROTOCOLO TMERT <span id="protocolo_tmert"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloMMC">
+                        <li class="nav-item">
+                            <a href="/protocolMMC" class="nav-link"><span>PROTOCOLO MMC <span id="protocolo_mmc"
+                                        class="badge badge-pill badge-success" style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloEsfuerzoVocal">
+                        <li class="nav-item">
+                            <a href="/vocalEffortProtocol" class="nav-link"><span>PROTOCOLO ESFUERZO VOCAL <span
+                                        id="protocolo_esfuerzo_vocal" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloRadiacionUV">
+                        <li class="nav-item">
+                            <a href="/uvRadiationProtocol" class="nav-link"><span>PROTOCOLO RADIACIÓN UV <span
+                                        id="protocolo_radiacion_uv" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloPsicosocial">
+                        <li class="nav-item">
+                            <a href="/psychosocialProtocol" class="nav-link"><span>PROTOCOLO PSICOSOCIAL <span
+                                        id="protocolo_psicosocial" class="badge badge-pill badge-success"
+                                        style="position: relative; bottom: 2px;">
+                                        0%
+                                    </span>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/emergencyPlan" class="nav-link"><i class="fas fa-shield-check"></i>
+                        <span>PISE
+                            <span id="plan_de_emergencias" class="badge badge-pill badge-success"
+                                style="position: relative; bottom: 2px;">
+                                0%
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/schoolBrigade" class="nav-link"><i class="fas fa-first-aid"></i>
+                        <span>BRIGADA ESCOLAR
+                            <span id="brigada_escolar" class="badge badge-pill badge-success"
+                                style="position: relative; bottom: 2px;">
+                                0%
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/parityGroup" class="nav-link"><i class="fas fa-siren-on"></i>
+                        <span>
+                            COMITÉ PARITARIO
+                            <span id="comite_paritario" class="badge badge-pill badge-success"
+                                style="position: relative; bottom: 2px;">
+                                0%
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/securityMonitor" class="nav-link"><i class="fas fa-user-shield"></i>
+                        <span>
+                            MONITOR DE SEGURIDAD
+                            <span id="monitor_de_seguridad" class="badge badge-pill badge-success"
+                                style="position: relative; bottom: 2px;">
+                                0%
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/covid19" class="nav-link"><i class="fas fa-stethoscope"></i>
+                        <span>
+                            COVID-19
+                            <span id="covid-19" class="badge badge-pill badge-success"
+                                style="position: relative; bottom: 2px;">
+                                0%
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/people/contractors" class="nav-link">
+                        <i class="fas fa-address-book fa-lg">
+                        </i>
+                        <span>
+                            CONTRATISTAS
+                            <span id="contratistas" class="badge badge-pill badge-success"
+                                style="position: relative; bottom: 2px;">
+                                0%
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/accidents" class="nav-link"><i class="fas fa-ban fa-lg"></i><span>NÓMINA
+                            ACCIDENTES</span></a>
+                </li>
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿PLANIFIQUEMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/activitiesControl" class="nav-link"><i class="fas fa-list-alt"></i>
+                        <span>ACTIVIDADES</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/activitiesSafetySchool" class="nav-link"><i class="fas fa-list-alt"></i>
+                        <span>ACTIVIDADES SAFETY SCHOOL</span>
+                    </a>
+                </li>
+                <li class="navigation-divider"></li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "GESTOR" ""}}
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿QUIENES SOMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/institution" class="nav-link"><i
+                            class="fas fa-building fa-lg"></i><span>INSTITUCIÓN</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/people/teachers" class="nav-link"><i
+                            class="fad fa-graduation-cap fa-lg"></i><span>DOCENTES</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/miper" class="nav-link"><i class="fas fa-exclamation-square"></i><span>MIPER</span></a>
+                </li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿CUMPLIMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-gavel"></i>
+                        <span>ASPECTOS LEGALES</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/record" class="nav-link">ANTECEDENTES</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/environmentTerrain" class="nav-link">ENTORNO Y TERRENO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EntornoYTerreno">
+                        <li class="nav-item">
+                            <a href="/ergonomics" class="nav-link">ERGONOMÍA</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="InstalacionesElectricasYGas">
+                        <li class="nav-item">
+                            <a href="/electricalGasInstallations" class="nav-link">INSTALACIONES ELÉCTRICAS Y GAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="InstalacionesSanitarias">
+                        <li class="nav-item">
+                            <a href="/sanitaryInstallations" class="nav-link">INSTALACIONES SANITARIAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PlantaFisica">
+                        <li class="nav-item">
+                            <a href="/physicalPlant" class="nav-link">PLANTA FÍSICA</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PlantaFisica">
+                        <li class="nav-item">
+                            <a href="/illumination" class="nav-link">ILUMINACIÓN</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="OrdenYAseo">
+                        <li class="nav-item">
+                            <a href="/orderCleanliness" class="nav-link">ORDEN Y ASEO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Accesos">
+                        <li class="nav-item">
+                            <a href="/access" class="nav-link">ACCESOS <h6 id="hola"></h6></a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="CirculacionYCrucesPeatonales">
+                        <li class="nav-item">
+                            <a href="/circulationCrosswalk" class="nav-link">CIRCULACIÓN Y CRUCES PEATONALES</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Estacionamientos">
+                        <li class="nav-item">
+                            <a href="/parkingLots" class="nav-link">ESTACIONAMIENTOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="SenalizacionYTransito">
+                        <li class="nav-item">
+                            <a href="/signalingTransit" class="nav-link">SEÑALIZACIÓN Y TRANSITO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Cocinas">
+                        <li class="nav-item">
+                            <a href="/kitchens" class="nav-link">COCINAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="PrimerosAuxilios">
+                        <li class="nav-item">
+                            <a href="/firstAid" class="nav-link">PRIMEROS AUXILIOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="SeguridadContraIncendios">
+                        <li class="nav-item">
+                            <a href="/fireSafety" class="nav-link">SEGURIDAD CONTRA INCENDIOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ViasDeEscape">
+                        <li class="nav-item">
+                            <a href="/escapeRoutes" class="nav-link">VÍAS DE ESCAPE</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ViasDeEscape">
+                        <li class="nav-item">
+                            <a href="/games" class="nav-link">JUEGOS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="Laboratorio">
+                        <li class="nav-item">
+                            <a href="/lab" class="nav-link">LABORATORIO</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EPPEnsenanzaTecnicoProfesionalPersonas">
+                        <li class="nav-item">
+                            <a href="/teachingTechnicalProfessionalPerson" class="nav-link">EPP ENSEÑANZA TÉCNICO
+                                PEROFESIONAL - PERSONA</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="EPPEnsenanzaTecnicoProfesionalMaquinarias">
+                        <li class="nav-item">
+                            <a href="/teachingTechnicalProfessionalMachinery" class="nav-link">EPP ENSEÑANZA TÉCNICO
+                                PEROFESIONAL - MAQUINARIAS</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="AuditLey16744">
+                        <li class="nav-item">
+                            <a href="/auditLey16744" class="nav-link">AUDITORIA ORGANISMO ADMINISTRADOR LEY 16.744</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item nav-item-submenu">
+                    <a href="#" class="nav-link"><i class="fas fa-medkit"></i>
+                        <span>PROTOCOLOS MINSAL</span></a>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloTMERT">
+                        <li class="nav-item">
+                            <a href="/protocolTMERT" class="nav-link">PROTOCOLO TMERT</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloMMC">
+                        <li class="nav-item">
+                            <a href="/protocolMMC" class="nav-link">PROTOCOLO MMC</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloEsfuerzoVocal">
+                        <li class="nav-item">
+                            <a href="/vocalEffortProtocol" class="nav-link">PROTOCOLO ESFUERZO VOCAL</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloRadiacionUV">
+                        <li class="nav-item">
+                            <a href="/uvRadiationProtocol" class="nav-link">PROTOCOLO RADIACIÓN UV</a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-group-sub" data-submenu-title="ProtocoloPsicosocial">
+                        <li class="nav-item">
+                            <a href="/psychosocialProtocol" class="nav-link">PROTOCOLO PSICOSOCIAL</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="/emergencyPlan" class="nav-link"><i class="fas fa-shield-check"></i>
+                        <span>PISE</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/schoolBrigade" class="nav-link"><i class="fas fa-first-aid"></i>
+                        <span>BRIGADA ESCOLAR</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/parityGroup" class="nav-link"><i class="fas fa-siren-on"></i>
+                        <span>COMITÉ PARITARIO</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/securityMonitor" class="nav-link"><i class="fas fa-user-shield"></i>
+                        <span>MONITOR DE SEGURIDAD</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/covid19" class="nav-link"><i class="fas fa-stethoscope"></i>
+                        <span>COVID-19</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/people/contractors" class="nav-link"><i
+                            class="fas fa-address-book fa-lg"></i><span>CONTRATISTAS</span></a>
+                </li>
+                <li class="nav-item">
+                    <a href="/accidents" class="nav-link"><i class="fas fa-ban fa-lg"></i><span>NÓMINA
+                            ACCIDENTES</span></a>
+                </li>
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿PLANIFIQUEMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/activitiesControl" class="nav-link"><i class="fas fa-list-alt"></i>
+                        <span>ACTIVIDADES</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/activitiesSafetySchool" class="nav-link"><i class="fas fa-list-alt"></i>
+                        <span>ACTIVIDADES SAFETY SCHOOL</span>
+                    </a>
+                </li>
+                <li class="navigation-divider"></li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "BRIGADA ESCOLAR" ""}}
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿CUMPLIMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/schoolBrigade" class="nav-link"><i class="fas fa-first-aid"></i>
+                        <span>BRIGADA ESCOLAR</span>
+                    </a>
+                </li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "COMITÉ PARITARIO" ""}}
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿CUMPLIMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/parityGroup" class="nav-link"><i class="fas fa-siren-on"></i>
+                        <span>COMITÉ PARITARIO</span>
+                    </a>
+                </li>
+                <li class="navigation-divider"></li>
+                {{/findRole}}
+                {{#findRole credentials.role.name "MONITOR DE SEGURIDAD" ""}}
+                <li class="navigation-divider"></li>
+                <li class="nav-item-header">
+                    <div class="text-uppercase font-size-xs line-height-xs">¿CUMPLIMOS?</div>
+                    <i class="icon-menu" title="Main"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="/securityMonitor" class="nav-link"><i class="fas fa-user-shield"></i>
+                        <span>MONITOR DE SEGURIDAD</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://drive-share.am1.myprofessionalmail.com/ajax/share/06f84980003e07486fbfa9403e074d92bc81a7207762721d/1/8/NDM"
+                        target="_blank" class="nav-link"><i class="fas fa-folder fa-lg"></i><span>DOCUMENTOS</span></a>
+                </li>
+                {{/findRole}}
+            </ul>
+        </div>
+    </div>
+</div>
+{{#extend "js"}}
+<script>
+
+</script>
+{{/extend}}

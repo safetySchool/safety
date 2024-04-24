@@ -1,0 +1,30 @@
+{{#extend "css"}}
+    <link rel="stylesheet" href="/public/app/reportTemplate/css/style.css">
+    <title>INFORME</title>
+{{/extend}}
+
+<div class="row d-flex justify-content-center">
+    <button class="btn btn-primary" id="printButton">Imprimir <i class="fas fa-print fa-lg fa-fw"></i></button>
+    {{#ifCondNumber credentials.rolePk 4}}
+        <button class="btn btn-success" id="validateButton">Validar <i class="fas fa-check fa-lg fa-fw"></i></button>
+    {{/ifCondNumber}}
+</div>
+{{#if isTyped}}
+    <div style="color: red; opacity:0.6; position: absolute; z-index: 1; left:25%; top:100%; font-size: 20pt;-webkit-transform: rotate(-1deg);-ms-transform: rotate(-1deg);transform: rotate(-1deg); font-family: Arial, Helvetica, sans-serif;">
+        SIN_VALIDAR
+    </div>
+{{/if}}
+<div class="report">
+    {{{reportHtml}}}
+    {{{footer}}}
+</div>
+{{#extend "js"}}
+    <script>
+        const globalCredentials = JSON.parse('{{{ parseJson credentials}}}');
+        const reportPk = JSON.parse('{{reportPk}}');
+        let isTyped = '{{{isTyped}}}';
+        let studyPk = '{{{studyPk}}}';
+    </script>
+    <script src="/public/app/reportTemplate/js/controller.js"></script>
+    <script src="/public/app/reportTemplate/js/main.js"></script>
+{{/extend}}

@@ -1,0 +1,156 @@
+{{#extend "css"}}
+    <link href="/tools/jQuery-contextMenu/dist/jquery.contextMenu.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/tools/bootstrap-fileinput/css/fileinput.min.css"/>
+
+    <style>
+        #qr-image{
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+
+        }
+        #qr-image img{
+            margin: auto;
+            display: block;
+        }
+    </style>
+{{/extend}}
+<div class="page-header border-bottom-0">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><i class="fad fa-graduation-cap fa-lg"></i> <span class="font-weight-semibold">Egresados</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="header-elements mb-3 mb-md-0">
+            <div class="d-flex justify-content-center">
+                <button id="btnCreate" type="button" class="btn btn-success d-inline-block border-left-1">
+                    NUEVO <i class="fad fa-plus-circle fa-lg fa-fw"></i>
+                </button>
+                <button id="btnEdit" type="button" class="btn btn-warning d-inline-block border-left-1" disabled>
+                    EDITAR <i class="fad fa-edit fa-lg fa-fw"></i>
+                </button>
+                <button id="btnDelete" type="button" class="btn bg-pink-400 d-inline-block border-left-1" disabled>
+                    ELIMINAR <i class="fad fa-trash fa-lg fa-fw"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content pt-0">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Listado de egresados</h5>
+        </div>
+
+        <div class="card-body">
+            Listado de <code>Egresados</code> aquí pueden crear, editar y eliminar alumnos egresados del sistema.
+        </div>
+        <table id="crud-datatable" class="table table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th class="pk">ID</th>
+                <th class="year">AÑO EGRESO</th>
+                <th class="course">CARRERA</th>
+                <th class="dni">RUT</th>
+                <th class="name">NOMBRES</th>
+                <th class="lastname">APELLIDOS</th>
+                <th class="email">EMAIL</th>
+                <th class="phone">CELULAR</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div id="modal-crud" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORMULARIO DE EGRESADOS</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="crud-form">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="year">AÑO EGRESO</label>
+                                <select id="year" class="form-control select2" required></select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="course">CARRERA</label>
+                                <select id="course" class="form-control select2" required></select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="dni">RUT</label>
+                                <input type="text" name="dni" id="dni" class="form-control" placeholder="Ingrese Rut" required data-parsley-rut="" data-parsley-trigger="change">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="name">NOMBRES</label>
+                                <input type="text" name="name" id="name" class="form-control" placeholder="Ingrese Nombre" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="lastname">APELLIDOS</label>
+                                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Ingrese Apeliido" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="email">EMAIL</label>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="example@domain.com" data-parsley-trigger="blur" required>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="phone">TELÉFONO</label>
+                                <input type="text" name="phone" id="phone" class="form-control" placeholder="12345678" data-parsley-trigger="blur" required data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" data-parsley-minlength="8" data-parsley-maxlength="8">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnSave" type="button" class="btn btn-primary">Guardar</button>
+                <button id="btnUpdate" type="button" class="btn bg-warning d-none">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{#extend "js"}}
+    <script type="text/javascript" src="/public/global/assets/jquery.rut.js"></script>
+    <script type="text/javascript" src="/tools/parsleyjs/dist/parsley.min.js"></script>
+    <script type="text/javascript" src="/tools/parsleyjs/dist/i18n/es.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/forms/selects/select2.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/select.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+    <script type="text/javascript" src="/public/global/js/datetime-dayjs.js"></script>
+    <script type="text/javascript" src="/tools/uniform/jquery.uniform.min.js "></script>
+    <script type="text/javascript" src="/tools/pnotify/dist/pnotify.js "></script>
+    <script type="text/javascript" src="/tools/select2/dist/js/select2.min.js "></script>
+    <script type="text/javascript" src="/public/assets/js/plugins/forms/styling/switch.min.js "></script>
+    <script type="text/javascript" src="/tools/bootstrap-multiselect/dist/js/bootstrap-multiselect.js "></script>
+    <script type="text/javascript" src="/public/global/js/extend_datatables.js"></script>
+
+    <script>let datatable;</script>
+
+    <script type="text/javascript" src="/public/app/graduates/js/controller.js"></script>
+    <script type="text/javascript" src="/public/app/graduates/js/datatables.js"></script>
+    <script type="text/javascript" src="/public/app/graduates/js/main.js"></script>
+{{/extend}}

@@ -1,0 +1,61 @@
+<!-- Main navbar -->
+<div class="navbar navbar-expand-md navbar-light" style="background-color: #ffa900!important;">
+    <div class="navbar-brand">
+        <a href="/" class="d-inline-block">
+            <h5 class="text-white" style="margin-bottom: 0;"><i class="fad fa-graduation-cap"></i> SAFETY SCHOOL</h5>
+        </a>
+    </div>
+
+    <div class="d-md-none">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+            <i class="icon-tree5"></i>
+        </button>
+        <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+            <i class="icon-paragraph-justify3"></i>
+        </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar-mobile">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                    <i class="icon-paragraph-justify3"></i>
+                </a>
+            </li>
+        </ul>
+
+        {{!-- <span class="badge bg-success my-3 my-md-0 ml-md-3 mr-md-auto">Online</span> --}}
+
+        <div class="my-3 my-md-0 ml-md-3 mr-md-auto">
+            <select class="form-control" id="institutions" onchange="institutionsOnchange();">
+            </select>
+        </div>
+
+
+
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown dropdown-user">
+                <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                    <span>{{credentials.fullname}} - {{credentials.role.name}}</span>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="/profile" class="dropdown-item"><i class="icon-user-plus"></i> Perfil</a>
+                    {{#if credentials.manyRoles}}
+                    <a href="/change_role" class="dropdown-item"><i class="fas fa-exchange-alt"></i> Cambiar
+                        Roles</a>
+                    {{/if}}
+                    <a href="#" onclick="global.openModalPassword();" class="dropdown-item"><i class="icon-cog5"></i>
+                        Cambiar Contraseña</a>
+                    <a href="/logout" class="dropdown-item"><i class="icon-switch2"></i> Cerrar Sesión</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{{#extend "js"}}
+<script type="text/javascript" src="/public/app/header/js/controller.js"></script>
+<script type="text/javascript" src="/public/app/header/js/main.js"></script>
+{{/extend}}
+<!-- /main navbar -->

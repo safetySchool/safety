@@ -1,0 +1,7 @@
+{
+    "esversion": 8,
+    "quotmark": "single",
+    "moz": true,
+    "expr": true,
+    "node": true
+}

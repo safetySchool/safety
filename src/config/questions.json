@@ -1,0 +1,131 @@
+[
+    {
+        "category": "PREGUNTAS",
+        "questions": [{
+            "id": "EB9CA7C7-ED69-454C-AADC-D4FB1BBE002A",
+            "type": "single-selection",
+            "title": "¿Cuál es su situación académica?",
+            "options": [
+                { "name": "Titulado", "value": "Titulado" },
+                { "name": "Egresado", "value": "Egresado" }
+            ],
+            "required": "required"
+        }, {
+            "id": "39737F34-BB5F-4FE2-A9B1-DAAC97182D68",
+            "type": "single-selection",
+            "title": "¿Continuó estudio superiores?",
+            "options": [
+                { "name": "Si", "value": "Si" },
+                { "name": "No (continúe a pregunta Nº 5)", "value": "No" }
+            ],
+            "required": "required"
+        }, {
+            "id": "A25E53A1-C61F-49AB-9F63-D7ECD587D341",
+            "type": "single-selection",
+            "title": "¿Dónde cursó los estudios superiores?",
+            "options": [
+                { "name": "Universidad", "value": "Universidad" },
+                { "name": "Instituto Profesional", "value": "Instituto Profesional" },
+                { "name": "Centro de Formación Técnica", "value": "CFT" }
+            ],
+            "required": ""
+        }, {
+            "id": "06DC192C-452B-40C1-81EA-82693285F02F",
+            "type": "single-selection",
+            "title": "¿La carrera que estudió en Educación Superior, tiene relación con su formación Técnico Profesional del Liceo?",
+            "options": [
+                { "name": "Directamente relacionado", "value": "Directamente relacionado" },
+                { "name": "Indirectamente relacionado", "value": "Indirectamente relacionado" },
+                { "name": "Nada Relacionado", "value": "Nada Relacionado" }
+            ],
+            "required": ""
+        }, {
+            "id": "8AAC60E9-3C61-4C5B-A814-2FC76A645BDD",
+            "type": "single-selection",
+            "title": "¿Actualmente usted se encuentra trabajando?",
+            "options": [
+                { "name": "Si", "value": "Si" },
+                { "name": "No (continúe a pregunta Nº 11)", "value": "No" }
+            ],
+            "required": "required"
+        }, {
+            "id": "70239DC6-A899-4FC0-B156-264CD3F08FB1",
+            "type": "text",
+            "title": "Nombre de la empresa en la que trabaja",
+            "hint": "Ingrese el nombre de la empresa. Ejemplo: Soprole",
+            "required": ""
+        }, {
+            "id": "5F731A1F-D03E-471A-8B62-D55E3C28EF98",
+            "type": "single-selection",
+            "title": "Tiempo que lleva en la empresa",
+            "options": [
+                { "name": "Menos de un año", "value": "Menos 1 año" },
+                { "name": "Entre 1 y 3 años", "value": "Entre 1 y 3 años" },
+                { "name": "Entre 3 y 4 años", "value": "Entre 3 y 4 años" },
+                { "name": "Más de 5", "value": "Más de 5" }
+            ],
+            "required": ""
+        }, {
+            "id": "9DF29B15-7C36-4FB9-B5DB-0E393D2612A5",
+            "type": "single-selection",
+            "title": "¿Cuál es su ingreso líquido mensual aproximado?",
+            "options": [
+                { "name": "Menos de $200.000", "value": "Menos de $200.000" },
+                { "name": "Entre $200.000 y $500.000", "value": "$200.000-$500.000" },
+                { "name": "Entre $500.000 y $800.000", "value": "$500.000-$800.000" },
+                { "name": "Más de $800.000", "value": "Más de $800.000" },
+                { "name": "Sin ingresos", "value": "Sin ingresos" }
+            ],
+            "required": ""
+        }, {
+            "id": "7A44E428-5E09-41F1-8391-753ECAA7828E",
+            "type": "single-selection",
+            "title": "¿Después de titularse del liceo, cuántos meses tardó en encontrar trabajo?",
+            "options": [
+                { "name": "1 a 6 meses", "value": "1 a 6 meses" },
+                { "name": "6 a 12 meses", "value": "6 a 12 meses" },
+                { "name": "Más de un año", "value": "Más de un año" }
+            ],
+            "required": ""
+        }, {
+            "id": "EE0AB0D3-B41B-4C40-A4E8-26897E1BDE8E",
+            "type": "single-selection",
+            "title": "¿Qué tan relacionado está su trabajo con la carrera que estudió?",
+            "options": [
+                { "name": "Directamente relacionado", "value": "Directamente relacionado" },
+                { "name": "Indirectamente relacionado", "value": "Indirectamente relacionado" },
+                { "name": "Nada Relacionado", "value": "Nada Relacionado" }
+            ],
+            "required": ""
+        }, {
+            "id": "E1D9A149-DB36-491C-89D3-C47E1DA98C9E",
+            "type": "single-selection",
+            "title": "¿Cree que los conocimientos y competencias de su Especialidad aprendidos en el Liceo han sido los necesarios y pertinentes para enfrentarse al mundo laboral?",
+            "options": [
+                { "name": "Muy en Desacuerdo", "value": "Muy en Desacuerdo" },
+                { "name": "Algo en Desacuerdo", "value": "Algo en Desacuerdo" },
+                { "name": "Ni de acuerdo Ni en Desacuerdo", "value": "Ni de acuerdo Ni en Desacuerdo" },
+                { "name": "Algo de Acuerdo", "value": "Algo de Acuerdo" },
+                { "name": "Muy de Acuerdo", "value": "Muy de Acuerdo" }
+            ],
+            "required": "required"
+        }, {
+            "id": "704FE98C-01E7-4CD3-8AC5-EB8CE2BBFFED",
+            "type": "single-selection",
+            "title": "¿El nivel de calidad de la enseñanza media técnico profesional fue altamente satisfactorio?",
+            "options": [
+                { "name": "Muy en Desacuerdo", "value": "Muy en Desacuerdo" },
+                { "name": "Algo en Desacuerdo", "value": "Algo en Desacuerdo" },
+                { "name": "Ni de acuerdo Ni en Desacuerdo", "value": "Ni de acuerdo Ni en Desacuerdo" },
+                { "name": "Algo de Acuerdo", "value": "Algo de Acuerdo" },
+                { "name": "Muy de Acuerdo", "value": "Muy de Acuerdo" }
+            ],
+            "required": "required"
+        }, {
+            "id": "AED637BA-4910-40A4-B5F2-982F67CAB3B4",
+            "type": "text",
+            "title": "Si usted pudiera aportar con ideas de mejora para la enseñanza media técnico profesional ¿Qué nos sugeriría?",
+            "required": "required"
+        }]
+    }
+]

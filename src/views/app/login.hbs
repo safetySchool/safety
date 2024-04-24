@@ -1,0 +1,69 @@
+{{#extend "css"}}
+<link rel="stylesheet" href="/public/app/login/css/style.css">
+<style>
+    .corfo {
+        width: 18rem !important;
+    }
+
+    @media screen and (max-width: 400px) {
+        .corfo {
+            width: 18rem !important;
+        }
+    }
+</style>
+{{/extend}}
+
+<div class="accountbg"></div>
+
+<div class="account-pages mt-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center">
+                            <div class="mb-1">
+                                <a><img src="/public/global/images/logo.png" style="height: 6rem;" alt="logo"></a>
+                            </div>
+                            <div class="text-center"> <img src="/public/app/login/images/corfo.png"
+                                    class="corfo img-responsive" alt="corfo"> </div>
+                        </div>
+
+                        <div class="p-2">
+                            <h4 class="font-size-18 mt-1 text-center">Bienvenido a Safety School</h4>
+                            <p class="text-muted text-center mb-2">Inicia Sesión para continuar.</p>
+
+                            <form class="form-horizontal" action="/login" method="POST">
+                                <div class="form-group">
+                                    <label for="login">Usuario</label>
+                                    <input type="text" class="form-control" id="login" name="login"
+                                        placeholder="Ingresa Usuario"
+                                        onblur="$(this).val($(this).val().toUpperCase() || '')">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="password">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Ingresa Contraseña">
+                                    <div class="form-group">
+                                        <a href="/forgot-password" class="text-muted float-right"><small>¿Olvidaste tu
+                                                contraseña?</small></a>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mt-4">
+                                    <div class="offset-md-6 col-sm-6 text-right">
+                                        <button class="btn bg-indigo w-md waves-effect waves-light"
+                                            type="submit">Iniciar Sesión</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,458 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+
+body {
+  background:#ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.contenedorAsistente {
+  left:8%;
+}
+
+/* Barra de iconos vertical */
+
+.iconbar-content {
+  left:0;
+  position: relative;
+  float: left;
+  height:100vh;
+}
+.icon-bar {
+    width: 160px;
+    height: 100%;
+    background-color: #66aae2;
+}
+.icon-bar span {
+  font-size:16px;
+  color: #ffffff;
+  margin:10px 0 0 0;
+}
+.icon-bar a {
+  cursor:pointer;
+    display: flex;
+    flex-flow: column wrap;
+    align-items:center;
+    padding: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight:500;
+    transition: all 0.3s ease; /* efectos hover */
+    color: white;
+    font-size: 36px;
+}
+.icon-bar a:hover {
+    background-color: #0072ce;
+    text-decoration: none !important;
+}
+.icon-bar a:active {
+    background-color: #0072ce;
+    text-decoration: none !important;
+}
+.active {
+    background-color: #0072ce;
+    text-decoration: none;
+}
+
+/* Contenido */
+
+.headerTitulo {
+  display: block;
+  margin:25px 0 45px 0;
+}
+
+h1.tituloInicial {
+  font-size:45pt;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight:100;
+  color:#333333;
+}
+h2.secundarioInicial {
+  font-size:22px;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight:500;
+  color:#333333;
+}
+.headerContent {
+  display: flex;
+  flex-flow:row nowrap;
+  align-items:center;
+  justify-content: center;
+
+  height:100px
+}
+
+/* Input form */
+
+.inputSearchClass {
+  border-radius: inherit !important;
+  height:6vh;
+  position: relative;
+}
+.buttonSearchClass {
+  position: relative;
+  height: 6vh;
+  border-radius: inherit !important;
+  background:#0072ce;
+  border:1px solid #0072ce;
+}
+.buttonSearchClass:hover {
+  border-radius: inherit !important;
+  background:#0066aae2;
+  border:1px solid #0066aae2;
+}
+
+.buttonc {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+
+/* botones header */
+
+.badgeListab {
+  width: 22px;
+  font-size:12px;
+  padding: 3px;
+  border-radius: 48%;
+  background: red;
+  color: white;
+  z-index:10;
+
+}
+.milistab {
+  background:none !important;
+  color: #333333;
+  text-transform: uppercase;
+  border:none;
+  cursor: pointer;
+  padding:0 6px;
+  float:left;
+}
+.milistab:hover {
+  color: #333333;
+}
+.milistab span {
+  display: block;
+  margin:5px 0 0 5px;
+  float: left;
+}
+
+.vacialistab {
+  background:none !important;
+  color: #858585;
+  text-transform: uppercase;
+  border:none;
+  cursor: pointer;
+  padding:0 6px;
+  float:left;
+}
+.vacialistab:hover {
+  color: #858585;
+}
+.vacialistab span {
+  display: block;
+  float: left;
+  margin:5px 0 0 5px;
+}
+
+/* Contenido con Scroll */
+
+.scrollContenedor {
+  overflow-y: scroll;
+  height:77vh;
+}
+::-webkit-scrollbar {
+      width: 30px;
+} /* this targets the default scrollbar (compulsory) */
+::-webkit-scrollbar-track {
+      background-color: #eeeeee;
+} /* the new scrollbar will have a flat appearance with the set background color */
+
+::-webkit-scrollbar-thumb {
+      background-color: #0072ce;
+} /* this will style the thumb, ignoring the track */
+
+::-webkit-scrollbar-button {
+      background-color: #eeeeee;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+::-webkit-scrollbar-corner {
+      background-color:none;
+} /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+
+
+/* Hover imagenes */
+
+.homeContainer {
+  display: flex;
+  flex-flow:wrap wrap;
+}
+
+.containerImageH {
+  position: relative;
+  overflow: hidden;
+  /*width: 30%;*/
+}
+
+.imgMenuAsist {
+  width:100px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index:10;
+  transition: .5s ease;
+  background-color: rgba(0,114,206,0.7);
+}
+
+.containerImageH:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 11;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text p {
+  font-size:16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  letter-spacing:0.03em;
+}
+.text h3 {
+  font-size:32px;
+  font-family: 'Roboto', sans-serif;
+  font-weight:500;
+  letter-spacing:0.03em;
+  margin:5px 0 8px 0;
+}
+
+
+
+/* Chat */
+
+.chatbar-content {
+  position:relative;
+  display: block;
+  float: right;
+  width:300px;
+  height:100vh;
+  background:#e6e6e6;
+}
+.headerChat {
+  width:100%;
+  height:100px;
+  display: block;
+  background:#0072ce;
+  position: fixed;
+  top:0;
+}
+
+.pedroContent {
+  position:fixed;
+  bottom:0;
+}
+
+/* Talk form */
+
+.inputTalkClass {
+  border-radius: inherit !important;
+  height:5vh;
+  position: relative;
+}
+.buttonTalkClass {
+  border-radius: inherit !important;
+  background:#0072ce;
+  border:1px solid #0072ce;
+  height:5vh;
+  position: relative;
+}
+.buttonTalkClass:hover {
+  border-radius: inherit !important;
+  background:#0066aae2;
+  border:1px solid #0066aae2;
+}
+
+.buttonTrashClass {
+  border-radius: inherit !important;
+  background:#333;
+  border:1px solid #333;
+  height:6vh;
+  width: 100%;
+  position: relative;
+}
+.buttonTrashClass:hover {
+  border-radius: inherit !important;
+  background:#222;
+  border:1px solid #222;
+}
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+  .imgMenuAsist {
+    width:50px;
+  }
+  .text h3 {
+    font-size:22px;
+    margin:4px 0 4px 0;
+  }
+  .text p {
+    font-size:12px;
+  }
+  .icon-bar {
+      width: 120px;
+  }
+  .icon-bar span {
+    font-size:12px;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+  .contenedorAsistente {
+    left:1% !important;
+  }
+  .imgMenuAsist {
+    width:50px;
+  }
+  .text h3 {
+    font-size:22px;
+    margin:4px 0 4px 0;
+  }
+  .text p {
+    font-size:12px;
+  }
+  .icon-bar {
+      width: 120px;
+  }
+  .icon-bar span {
+    font-size:13px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+  .contenedorAsistente {
+    left:4% !important;
+  }
+  .imgMenuAsist {
+    width:50px;
+  }
+  .text h3 {
+    font-size:22px;
+    margin:5px 0 4px 0;
+  }
+  .text p {
+    font-size:12px;
+  }
+  .icon-bar {
+      width: 130px;
+  }
+  .icon-bar span {
+    font-size:16px;
+  }
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1400px) {
+  .contenedorAsistente {
+    left:8% !important;
+  }
+  .imgMenuAsist {
+    width:100px;
+  }
+  .text h3 {
+    font-size:32px;
+    margin:5px 0 8px 0;
+  }
+  .text p {
+    font-size:16px;
+  }
+  .icon-bar {
+      width: 160px;
+  }
+  .icon-bar span {
+    font-size:16px;
+  }
+}

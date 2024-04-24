@@ -1,0 +1,134 @@
+<style>
+    body {
+        background-color: #fdfdfd !important;
+    }
+
+    .card-custom-border {
+        border-top: 10px indigo solid;
+    }
+
+    .font-weight-200 {
+        font-weight: 200 !important;
+    }
+
+    .img-title {
+        height: 6rem;
+    }
+
+    .custom-control-label {
+        font-weight: 400 !important;
+        height: 0 !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        .custom-checkbox {
+            margin-top: 30px;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 0 !important;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <form id="survey">
+            <div class="offset-2 col-8 mt-6">
+                <div class="card card-custom-border text-center">
+                    <div class="card-header">
+                        <h1 class="card-title"> Encuesta ex alumnos Liceo Bicentenario TP Simón Bolívar</h1>
+                    </div>
+                    <div class="card-body text-left">
+                        <label class="font-weight-400">La siguiente encuesta tiene por objeto conocer su opinión con
+                            respecto a la visión que tiene Usted como Ex Alumno(a) sobre su experiencia en el Liceo
+                            Bicentenario TP Simón Bolívar de Curicó, y su inserción laboral posterior a su
+                            titulación.</label>
+                    </div>
+                </div>
+            </div>
+            {{#each questions}}
+                <div class="offset-lg-2  col-md-12 col-lg-8 mt-4">
+                    <div class="text-center">
+                        <h1 class="mt--4">{{this.category}}</h1>
+                    </div>
+                </div>
+                {{#each this.questions}}
+                    {{#ifCond this.type "single-selection"}}
+                        <div class="offset-lg-2  col-md-12 col-lg-8">
+                            <div class="card text-left">
+                                <div class="card-header">
+                                    <h5 class="font-size-16 mb-1 mt-0">{{inc @index}}.- {{this.title}}</h5>
+                                    {{#if this.hint}}
+                                        <p class="font-size-14 text-muted">
+                                            {{this.hint}}
+                                        </p>
+                                    {{/if}}
+                                </div>
+                                <div class="card-body">
+                                    <div class="mt--4 question" data-id="{{this.id}}"
+                                         data-nested="{{this.nested_value}}" data-type="single-select">
+                                        {{#each this.options}}
+                                            <div class="custom-control custom-radio mb-2">
+                                                <input type="radio" id="customCheck-{{../id}}-{{@index}}"
+                                                       name="{{../id}}" class="custom-control-input"
+                                                       data-value="{{this.value}}"
+                                                       data-nested="{{this.nested}}" {{../required}}>
+                                                <label class="custom-control-label"
+                                                       for="customCheck-{{../id}}-{{@index}}">{{this.name}}</label>
+                                            </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- HRE -->
+                    {{/ifCond}}
+                    {{#ifCond this.type "number"}}
+                        <div class="offset-lg-2  col-md-12 col-lg-8">
+                            <div class="card text-left question" data-type="number" data-id="{{this.id}}">
+                                <div class="card-body">
+                                    <h5 class="font-size-16 mb-1 mt-0">{{@index}}.- {{this.title}}</h5>
+                                    {{#if this.hint}}
+                                        <p class="font-size-14 text-muted">
+                                            {{this.hint}}
+                                        </p>
+                                    {{/if}}
+                                    <div class="mt--4">
+                                        <div class="form-group">
+                                            <label for="nested">{{this.nested.name}}</label>
+                                            <input type="tel" class="form-control onlyNumber"
+                                                   name="nested" {{this.required}} data-parsley-trigger="change">
+                                            <small id="helpId" class="form-text text-muted">Solo números</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/ifCond}}
+                    {{#ifCond this.type "text"}}
+                        <div class="offset-lg-2  col-md-12 col-lg-8">
+                            <div class="card text-left question" data-type="text" data-id="{{this.id}}">
+                                <div class="card-body">
+                                    <h5 class="font-size-16 mb-1 mt-0">{{inc @index}}.- {{this.title}}</h5>
+                                    {{#if this.hint}}
+                                        <p class="font-size-14 text-muted">
+                                            {{this.hint}}
+                                        </p>
+                                    {{/if}}
+                                    <div class="mt--4">
+                                        <div class="form-group">
+                                            <label for="nested">{{this.nested.name}}</label>
+                                            <input id="nested" type="text" class="form-control"
+                                                   name="nested" {{this.required}}>
+                                            <small id="helpId" class="form-text text-muted">Ingrese el texto de su respuesta</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/ifCond}}
+                {{/each}}
+            {{/each}}
+        </form>
+    </div>
+</div>

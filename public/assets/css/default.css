@@ -1,0 +1,53 @@
+.label-navbar {
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+}
+
+.modal-module {
+    width: 99% !important;
+    height: 99% !important;
+    margin: 5px !important;
+    padding: 0 !important;
+    overflow: auto;
+}
+
+.modal-xl {
+    max-width: 75% !important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.divLoading {
+    margin-left: 46%;
+    margin-top: 25%;
+    z-index: 999;
+    position: fixed;
+}
+
+.card-body-theme {
+    background-color: #fba901;
+}
+
+.card-title-theme {
+    margin-bottom: 0px;
+    color: #fff;
+}
+
+@media (min-width: 1400px) {
+    .carousel {
+        width: 80%;
+    }
+}
+
+@media (min-width: 1920px) {
+    .carousel {
+        width: 80%;
+    }
+}

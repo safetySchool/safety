@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="/public/app/reportTemplate/css/style.css">
+<title>INFORME</title>
+{{#if isTyped}}
+    <div
+        style="color: red; opacity:0.6; position: absolute; z-index: 1; left:25%; top:100%; font-size: 20pt;-webkit-transform: rotate(-1deg);-ms-transform: rotate(-1deg);transform: rotate(-1deg); font-family: Arial, Helvetica, sans-serif;">
+        SIN_VALIDAR
+    </div>
+{{/if}}
+<div class="report">
+    {{{reportHtml}}}
+    {{{footer}}}
+</div>

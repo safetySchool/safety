@@ -1,0 +1,103 @@
+{{> report-module-full}}
+<div class="modal fade" id="viewReport-modal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="panel-body text-left">
+                            <h4 class="modal-title"><i class="fa fa-file-text-o" aria-hidden="true"></i> INFORMES: <label id="patient-report-wiew"></label></h4>
+                            <h6 id="pendingExamsMessage" class="text-muted text-warning hidden">Quedan estudios pendientes de informar, haga click en el botón <b>INFORMAR</b> para completar</h6>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 text-center">
+                        <div class="panel-body text-right">
+                            {{#findRole credentials.auth "REPORT" "REPORT_TYPE"}}
+                            <button type="button" id="new-report-view" class="btn btn-info hidden">INFORMAR&nbsp; <i class="fa fa-file-text-o" aria-hidden="true"></i></button>
+                            {{/findRole}}
+                            {{#findRole credentials.auth "REPORT" "VALIDATE"}}
+                                <button type="button" id="validate-report-view" class="btn btn-success" disabled>VALIDAR <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            {{/findRole}}
+                            {{#findRole credentials.auth "REPORT" "UPDATE"}}
+                                <button type="button" id="edit-report-view" class="btn btn-warning" disabled>EDITAR <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            {{/findRole}}
+                            {{#findRole credentials.auth "REPORT" "VOID"}}
+                                <button type="button" id="void-report-view" class="btn btn-danger" title="Anular" disabled>INVALIDAR <i class="fa fa-eraser" aria-hidden="true"></i></button>
+                            {{/findRole}}
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="viewReport-study">
+                <table id="ViewReportTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TÍTULO</th>
+                            <th>TIPEADOR</th>
+                            <th>INFORMANTE</th>
+                            <th>FECHA</th>
+                            <th>ESTADO</th>
+                            <th>IMPRESO</th>
+                            <th>ADENDUM</th>
+                            <th>VER</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewReportModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id="modal-body-preview" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewReportAdendum">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div id="modal-body-preview" class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="reportContentModule" style="overflow-y: scroll;"></div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="textAdendumModule" class="control-label">INGRESE ADENDUM</label>
+                            <textarea name="" id="textAdendumModule" class="form-control" rows="3" required="required"></textarea>
+                        </div>
+                        <!-- <label for="textAdendumModule">INGRESE ADENDUM</label>
+                        <textarea id="textAdendumModule" class="form-control" rows="3" required="required"></textarea> -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="saveAdendumModule" type="button" class="btn btn-success">GUARDAR</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">CERRAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#extend "js"}}
+    <script>
+        // const userAuth = globalCredentials.auth;
+        var windowReport;
+    </script>
+    <script src="/public/app/report/view-report/js/datatableViewReport.js"></script>
+    <script src="/public/app/report/view-report/js/ControllerViewReport.js"></script>
+    <script src="/public/app/report/view-report/js/mainViewReport.js"></script>
+    <script src="/public/app/report/view-report/js/ViewReport.js"></script>
+{{/extend}}

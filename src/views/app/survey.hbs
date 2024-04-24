@@ -1,0 +1,108 @@
+{{#extend "css"}}
+    <link href="/tools/jQuery-contextMenu/dist/jquery.contextMenu.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/tools/bootstrap-fileinput/css/fileinput.min.css"/>
+{{/extend}}
+<div class="page-header border-bottom-0">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><i class="fad fa-graduation-cap fa-lg"></i> <span class="font-weight-semibold">Encuestas</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="header-elements mb-3 mb-md-0">
+            <div class="d-flex justify-content-center">
+                <button id="btnPreview" type="button" class="btn bg-indigo d-inline-block border-left-1">
+                    PREVISUALIZAR <i class="fad fa-eye fa-lg fa-fw"></i>
+                </button>
+                <button id="btnCreate" type="button" class="btn btn-success d-inline-block border-left-1">
+                    NUEVO <i class="fad fa-plus-circle fa-lg fa-fw"></i>
+                </button>
+                <button id="btnClose" type="button" class="btn bg-pink-400 d-inline-block border-left-1" disabled>
+                    CERRAR <i class="fad fa-trash fa-lg fa-fw"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content pt-0">
+    <div class="card">
+        <div class="card-header header-elements-inline">
+            <h5 class="card-title">Listado de encuestas</h5>
+        </div>
+
+        <div class="card-body">
+            <code>Encuestas</code>
+        </div>
+        <table id="crud-datatable" class="table table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th class="pk">ID</th>
+                <th class="year">AÑO EGRESO</th>
+                <th class="dni">CANTIDAD DE ALUMNOS</th>
+                <th class="name">FECHA CREACIÓN</th>
+                <th class="lastname">FECHA ÚLTIMA RESPUESTA</th>
+                <th class="graduates">VER ALUMNOS</th>
+                <th class="report">INFORME</th>
+                <th class="email">ACTIVA</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div id="modal-crud" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORMULARIO DE ENCUESTA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="crud-form">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="years">AÑO EGRESO</label>
+                                <select id="years" class="form-control select2" required multiple></select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnSave" type="button" class="btn btn-primary">Guardar</button>
+                <button id="btnUpdate" type="button" class="btn bg-warning d-none">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{#extend "js"}}
+    <script type="text/javascript" src="/public/global/assets/jquery.rut.js"></script>
+    <script type="text/javascript" src="/tools/parsleyjs/dist/parsley.min.js"></script>
+    <script type="text/javascript" src="/tools/parsleyjs/dist/i18n/es.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/forms/selects/select2.min.js"></script>
+    <script type="text/javascript"
+            src="/public/base/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/select.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+    <script type="text/javascript" src="/public/global/js/datetime-dayjs.js"></script>
+    <script type="text/javascript" src="/tools/uniform/jquery.uniform.min.js "></script>
+    <script type="text/javascript" src="/tools/pnotify/dist/pnotify.js "></script>
+    <script type="text/javascript" src="/tools/select2/dist/js/select2.min.js "></script>
+    <script type="text/javascript" src="/public/assets/js/plugins/forms/styling/switch.min.js "></script>
+    <script type="text/javascript" src="/tools/bootstrap-multiselect/dist/js/bootstrap-multiselect.js "></script>
+    <script type="text/javascript" src="/public/global/js/extend_datatables.js"></script>
+
+    <script>let datatable;</script>
+
+    <script type="text/javascript" src="/public/app/survey/js/controller.js"></script>
+    <script type="text/javascript" src="/public/app/survey/js/datatables.js"></script>
+    <script type="text/javascript" src="/public/app/survey/js/main.js"></script>
+{{/extend}}

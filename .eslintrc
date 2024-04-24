@@ -1,0 +1,94 @@
+{
+    "ecmaFeatures": {
+        "templateStrings": true
+    },
+    "env": {
+        "node": true,
+        "es6": true,
+        "jquery": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 8,
+        "ecmaFeatures": {
+            "templateStrings": true,
+            "blockBindings": true
+        }
+    },
+    "rules": {
+        "camelcase": [
+            "error",
+            {
+                "properties": "always"
+            }
+        ],
+        "prefer-template": 1,
+        "new-cap": 0,
+        "semi": [
+            1,
+            "always"
+        ],
+        "quotes": [
+            2,
+            "single"
+        ],
+        "consistent-this": [
+            1,
+            "self"
+        ],
+        "new-parens": 1,
+        "no-array-constructor": 1,
+        "no-lonely-if": 1,
+        "no-new-object": 1,
+        "no-spaced-func": 1,
+        "semi-spacing": 1,
+        "no-trailing-spaces": 1,
+        "no-mixed-spaces-and-tabs": 1,
+        "sort-vars": 1,
+        "object-curly-spacing": [
+            1,
+            "always"
+        ],
+        "space-infix-ops": 1,
+        "keyword-spacing": 1,
+        "space-unary-ops": 1,
+        "no-unused-vars": [
+            "error",
+            {
+                "vars": "local",
+                "args": "none",
+                "ignoreRestSiblings": false
+            }
+        ],
+        "no-use-before-define": 1,
+        "eqeqeq": 1,
+        "curly": [
+            1,
+            "all"
+        ],
+        "dot-notation": 1,
+        "no-eval": 1,
+        "no-else-return": 1,
+        "no-eq-null": 1,
+        "no-extend-native": 1,
+        "yoda": [
+            1,
+            "never"
+        ],
+        "no-return-assign": 1,
+        "no-new-wrappers": 1,
+        "no-native-reassign": 1,
+        "no-constant-condition": 1,
+        "comma-dangle": 1,
+        "no-sparse-arrays": 1,
+        "no-ex-assign": 1,
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ]
+    }
+}

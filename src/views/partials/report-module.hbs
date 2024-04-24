@@ -1,0 +1,201 @@
+{{#extend "css"}}
+    <link rel="stylesheet" type="text/css" href="/tools/bootstrap-select/dist/css/bootstrap-select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/tools/switchery/dist/switchery.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/app/report/css/style.css"/>
+{{/extend}}
+<div class="modal modal-fullscreen" id="modal-report">
+    <div class="modal-dialog">
+        <div class="modal-content" id="modal-content-report">
+            <div class="modal-body" style="zoom: {{credentials.zoomReport}}%;">
+                <div class="row">
+                    <div id="panel-left" class="col-md-3">
+                        <div class="card card-default">
+                            <div class="card-heading">
+                                <div class="report-buttons">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <label for="anamnesisReport">ANAMNESIS</label>
+                                    <textarea name="test" id="anamnesisReport" class="form-control" rows="7"
+                                              readonly></textarea>
+                                </div>
+                                <div id="previous-reports-container" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <br>
+                                    <h4>INFORMES PREVIOS</h4>
+                                    <div id="reports-control"></div>
+                                </div>
+                            </div>
+                            {{#ifCondNumber credentials.rolePk "7"}}
+                                <div class="panel-body">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <label for="previewTemplateReport">PREVISUALIZACIÓN PLANTILLAS</label>
+                                        <select id="previewTemplateReport" class="show-menu-arrow"
+                                                title="SELECCIONE PLANTILLAS" data-live-search="true" show-tick
+                                                data-width="100%" disabled></select>
+                                    </div>
+                                </div>
+                            {{/ifCondNumber}}
+                        </div>
+                    </div>
+                    <div id="card-report" class="col-md-6" data-col="6">
+                        <div class="card card-default">
+                            <div class="card-heading panel-report">
+                                <div class="d-flex justify-content-between bg-dark rounded p-2">
+                                    <button id="hideLeft" type="button" data-toggle="show"
+                                            class="btn btn-primary btn-header"><i class="fa fa-eye-slash fa-2x"
+                                                                                  aria-hidden="true"></i></button>
+                                    <div>
+                                        <button id="btnConfirmReport" type="button" class="btn btn-success btn-header">
+                                            INFORMAR
+                                        </button>
+                                        <button id="start_button" type="button" class="btn btn-secondary btn-header">
+                                            VOZ
+                                        </button>
+                                    </div>
+                                    <button id="hideRight" data-toggle="show" type="button"
+                                            class="btn btn-primary btn-header"><i class="fa fa-eye-slash fa-2x"
+                                                                                  aria-hidden="true"></i></button>
+                                </div>
+                                <h1 class="card-title text-center" style="font-size: 3px;">&nbsp;</h1>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="doctorReport">MEDICO INFORMANTE</label>
+                                        <select id="doctorReport" class="show-menu-arrow" title="SELECCIONE MÉDICO"
+                                                multiple data-max-options="1" data-actions-box="false"
+                                                data-live-search="true" data-width="100%"
+                                                data-selected-text-format="count"></select>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label for="benefitsReport">EXÁMENES</label>
+                                            <select id="benefitsReport" class="show-menu-arrow" multiple
+                                                    data-actions-box="false" data-selected-text-format="count"
+                                                    title="SELECCIONE EXAMEN" data-live-search="true" show-tick
+                                                    data-width="100%" disabled></select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="templateReport">PLANTILLAS</label>
+                                        <select id="templateReport" class="show-menu-arrow"
+                                                data-size="10"
+                                                title="SELECCIONE PLANTILLAS" data-live-search="true" show-tick
+                                                data-width="100%" disabled></select>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div id="tituloDiv" class="form-group" style="width:100%;">
+                                            <label for="titleReport">TÍTULO</label>
+                                            <input type="text" id="titleReport" class="form-control"
+                                                   placeholder="Título">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div id="tecnicaDiv" class="form-group" style="width:100%;">
+                                            <label for="techReport">TÉCNICA</label>
+                                            <textarea id="techReport" class="form-control" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div id="antecedentesDiv" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <label for="recordsReport">ANTECEDENTES</label>
+                                        <textarea id="recordsReport" class="form-control mt-1" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="row">
+                                            <div id="hallazgosDiv" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label for="findingsReport" class="mt-1">HALLAZGOS</label>
+                                                <textarea id="findingsReport"
+                                                          class="form-control has-error has-feedback mt-1"
+                                                          rows="20"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="row">
+                                            <div id="impresionDiv" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <label for="impressionReport" class="mt-1">IMPRESIÓN DIAGNÓSTICA</label>
+                                                <textarea id="impressionReport" class="form-control mt-1"
+                                                          rows="3"></textarea>
+                                                <input id="study-data" type="hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="panel-right" class="col-md-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-right">
+                                <button id="previewReport" type="button" class="btn btn-info">Vista Previa</button>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <p style="line-height:15px"><strong>Dni :</strong> <span id="titleDniReport"></span>
+                                    </p>
+                                    <p style="line-height:15px"><strong>Paciente :</strong> <span
+                                            id="titlePatientReport"></span></p>
+                                    <p style="line-height:15px"><strong>Edad : </strong><span
+                                            id="titleAgeReport"></span></p>
+                                    <p style="line-height:15px"><strong>Género : </strong><span
+                                            id="titleGenderReport"></span></p>
+                                    <p style="line-height:15px"><strong>Modalidad : </strong><span
+                                            id="titleStudyModalityReport"></span></p>
+                                    <p style="line-height:15px"><strong>Descripción : </strong><span
+                                            id="titleStudyDescReport"></span></p>
+                                    <p style="line-height:15px"><strong>Fecha Estudio : </strong><span
+                                            id="titleStudyDateReport"></span></p>
+                                    <p style="line-height:15px"><strong>Nº Imágenes : </strong><span
+                                            id="titleNumImagesReport"></span></p>
+                                </div>
+                                <div class="col-md-12 col-lg-12 text-center mt-2">
+                                    <i class="fas fa-undo fa-lg cursor-pointer text-danger" onclick="document.execCommand('undo', false, null);"></i>
+                                    <i class="fas fa-redo fa-lg cursor-pointer text-success" onclick="document.execCommand('redo', false, null);"></i>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                    <h3>Orden Médica</h3>
+                                    <a id="thumbnail" href="#" class="thumbnail">
+                                        <!-- <img id="ordenImg" src="/public/uploads/order/NO-IMAGE.png" style="height: 100%; width: 100%; display: block;"> -->
+                                    </a>
+                                </div>
+                                <div id="audioContainer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                                <div id="reportsTempContainer" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"></div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <span id="interim_span" class="interim"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-order">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="orderModal" src="" class="img-responsive">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#extend "js"}}
+    <script type="text/javascript" src="/tools/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="/tools/switchery/dist/switchery.min.js"></script>
+    <script type="text/javascript" src="/public/global/assets/ckeditor5/ckeditor.js"></script>
+
+    <script src="/public/app/report/js/controllerModuleReport.js"></script>
+    <script src="/public/app/report/js/mainModuleReport.js"></script>
+    <script src="/public/app/report/js/ReportModule.js"></script>
+{{/extend}}

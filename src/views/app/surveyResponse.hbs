@@ -1,0 +1,78 @@
+<style>
+    body {
+        background-color: #fdfdfd !important;
+    }
+
+    .card-custom-border {
+        border-top: 10px indigo solid;
+    }
+
+    .font-weight-200 {
+        font-weight: 200 !important;
+    }
+
+    .img-title {
+        height: 6rem;
+    }
+
+    .custom-control-label {
+        font-weight: 400 !important;
+        height: 0 !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        .custom-checkbox {
+            margin-top: 30px;
+        }
+    }
+
+    .form-group {
+        margin-bottom: 0 !important;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <form id="survey">
+            <div class="offset-2 col-8 mt-6">
+                <div class="card card-custom-border text-center">
+                    <div class="card-header">
+                        <h1 class="card-title"> Encuesta ex alumnos Liceo Bicentenario TP Simón Bolívar</h1>
+                    </div>
+                    <div class="card-body text-left">
+                        <label class="font-weight-400">La siguiente encuesta tiene por objeto conocer su opinión con
+                            respecto a la visión que tiene Usted como Ex Alumno(a) sobre su experiencia en el Liceo
+                            Bicentenario TP Simón Bolívar de Curicó, y su inserción laboral posterior a su
+                            titulación.</label>
+                    </div>
+                </div>
+            </div>
+            {{#each questions}}
+                <div class="offset-lg-2  col-md-12 col-lg-8 mt-4">
+                    <div class="text-center">
+                        <h1 class="mt--4">{{this.category}}</h1>
+                    </div>
+                </div>
+                {{#each this.questions}}
+                    <div class="offset-lg-2  col-md-12 col-lg-8">
+                        <div class="card text-left question" data-type="text" data-id="{{this.id}}">
+                            <div class="card-body">
+                                <h5 class="font-size-16 mb-1 mt-0">{{inc @index}}.- {{this.title}}</h5>
+                                {{#if this.hint}}
+                                    <p class="font-size-14 text-muted">
+                                        {{this.hint}}
+                                    </p>
+                                {{/if}}
+                                <div class="mt--4">
+                                    <div class="form-group">
+                                        <label for="nested">RESPUESTA: </label>
+                                        <input id="nested" type="text" class="form-control" name="nested" value="{{this.response}}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {{/each}}
+            {{/each}}
+        </form>
+    </div>
+</div>

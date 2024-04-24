@@ -1,0 +1,367 @@
+{{#extend "css"}}
+    <link href="/tools/jQuery-contextMenu/dist/jquery.contextMenu.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/public/app/studies/css/chatbox.css">
+    <link rel="stylesheet" href="/public/app/studies/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/tools/bootstrap-fileinput/css/fileinput.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/global/assets/sweetalert2/dist/sweetalert2.min.css"/>
+    <style>
+        #qr-image{
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+
+        }
+        #qr-image img{
+            margin: auto;
+            display: block;
+        }
+    </style>
+{{/extend}}
+{{> chatbox}} {{> view-report}}{{> scanner-module}}
+<div class="page-header border-bottom-0">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">Listado de estudios</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+
+        <div class="header-elements d-none mb-3 mb-md-0">
+            <div class="d-flex justify-content-center">
+                <a href="/studies/waiting" class="btn btn-link btn-float text-default"><i
+                    class="fas fa-eye-slash fa-lg text-danger-800"></i><span>ASIGNADO</span></a>
+                <a href="/studies/assigned" class="btn btn-link btn-float text-default"><i
+                    class="fas fa-user-md fa-lg text-indigo-800"></i> <span>POR INFORMAR</span></a>
+                <a href="/studies/dictated" class="btn btn-link btn-float text-default"><i
+                    class="fas fa-microphone fa-lg text-info-300"></i> <span>POR TRANSCRIBIR</span></a>
+                <a href="/studies/typed" class="btn btn-link btn-float text-default"><i
+                    class="fas fa-edit fa-lg text-blue-800"></i> <span>POR VALIDAR</span></a>
+                <a href="/studies/validated" class="btn btn-link btn-float text-default"><i
+                    class="fas fa-check fa-lg text-green-600"></i> <span>VALIDADO</span></a>
+                <a href="#" class="btn btn-link btn-float text-default"><i
+                    class="fas fa-envelope-open-text fa-lg text-primary-600"></i> <span>ENVIADO</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content pt-0">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-12 col-md-2 text-center">
+                    <input type="date" id="idate" class="form-control" value="" required="required" title="">
+                </div>
+                <div class="col-sm-12 col-md-2 text-center">
+                    <input type="date" id="fdate" class="form-control" value="" required="required" title="">
+                </div>
+                <div class="col-sm-12 col-md-3 text-right">
+                    {{#if institutionFilter}}
+                        <select id="institutionFilter" class="form-control"
+                                onchange="controller.changeInstitutionFilter()">
+                            <option value="">-- Filtro por Institución --</option>
+                        </select>
+                    {{/if}}
+                </div>
+                <div class="col-sm-12 col-md-5 text-right">
+                    <div class="buttons-control">
+                        {{#findRole credentials.auth "USERS" "UPDATE_USERS"}}
+                            <button id="btnForceReport" type="button" class="btn bg-pink-400 d-none" disabled>INFORME
+                                HL7 <i
+                                    class="fad fa-link fa-lg fa-fw"></i></button>
+                        {{/findRole}}
+                        {{#findRole credentials.auth "STUDY" "UPDATE"}}
+                            <button id="btnForce" type="button" class="btn btn-success" disabled>INTEGRACIÓN <i
+                                class="fad fa-link fa-lg fa-fw"></i></button>
+                        {{/findRole}}
+                        {{#findRole credentials.auth "STUDY" "QR"}}
+                            <button id="btnQR" type="button" class="btn bg-indigo-400" disabled>CÓDIGO QR <i
+                                class="fad fa-qrcode fa-lg fa-fw"></i></button>
+                        {{/findRole}}
+                        {{#findRole credentials.auth "STUDY" "UPDATE"}}
+                            <button id="btnMail" type="button" class="btn btn-primary" disabled>CORREO <i
+                                class="fad fa-paper-plane fa-lg fa-fw"></i></button>
+                        {{/findRole}}
+                        {{#findRole credentials.auth "DICOM" "DOWNLOAD_ALL"}}
+                            <button id="btnDonwload" type="button" class="btn btn-primary">DICOM <i
+                                class="fa fa-download"></i></button>
+                        {{/findRole}}
+                        {{#findRole credentials.auth "STUDY" "ASSOCIATE_GINE"}}
+                            <button id="btnAsocGine" type="button" class="btn bg-success-400" disabled>GINECOLOGÍA <i
+                                class="fa fa-edit"></i></button>
+                        {{/findRole}}
+                        {{#findRole credentials.auth "STUDY" "UPDATE"}}
+                            <button id="btnEdit" type="button" class="btn bg-orange-400" disabled>EDITAR <i
+                                class="fa fa-edit"></i></button>
+                        {{/findRole}}
+                        {{#findRole credentials.auth "STUDY" "DELETE"}}
+                            <button id="btnDelete" type="button" class="btn btn-danger" disabled>BORRAR <i
+                                class="fa fa-ban"></i></button>
+                        {{/findRole}}
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 text-left">
+                    <select id="doctorFilter" class="form-control hidden mt-2"
+                            onchange="controller.changeDoctorFilter()">
+                        <option value="">-- FILTRO POR ASIGNADO --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <table id="crud-datatable" class="table table-condensed table-hover table-striped">
+            <thead>
+            <tr>
+                <th class="pk">ID</th>
+                <th class="study_date">FECHA</th>
+                <th class="study_time">HRA</th>
+                <th class="status">ESTADO</th>
+                <th class="all pat_name">PACIENTE</th>
+                <th class="all pat_id">RUT</th>
+                <th class="all age">EDAD</th>
+                <th class="study_desc"></th>
+                <th class="imagenes">Nº</th>
+                <th class="institution">INSTITUCIÓN</th>
+                <th class="mods_in_study"></th>
+                <th class="prioridad">PRIORIDAD</th>
+                <th class="prioridad_order">PRIORIDADORDER</th>
+                <th class="gine">GINECOLOGIA</th>
+                <th class="userAssign text-center">ASIGNADO</th>
+                <th class="printed text-center"><i class="fas fa-print fa-lg"></i></th>
+                <th class="uid text-center">DCM</th>
+                <th class="report text-center">INF</th>
+                <th class="reportNew text-center">INF</th>
+                <th class="uid">VER</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-information">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-primary">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">INGRESO DE INFORMACIÓN</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="">DESCRIPCIÓN DEL ESTUDIO</label>
+                            <br>
+                            <input type="text" name="study_desc" id="study_desc" class="form-control"
+                                   placeholder="Descripción DICOM del estudio">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="">PRIORIDAD</label>
+                            <br>
+                            <select id="priority" class="form-control" required="required">
+                                <option value="">Sin prioridad</option>
+                                <option value="1 Hora">Urgente</option>
+                                <option value="3 Horas">Emergencia</option>
+                                <option value="6 Horas">6-8 Horas</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label for="doctorAssign">ASIGNAR RADIOLOGO</label>
+                            <br>
+                            <select id="doctorAssign" class="form-control" required="required">
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group">
+                            <label for="anamnesis">ANAMNESIS</label>
+                            <br>
+                            <textarea name="anamnesis" id="anamnesis" class="form-control" rows="8"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" id="btnSaveInfo" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-fullscreen bg-dark" id="modal-audio">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">GRABAR AUDIO PACIENTE: <b id="patientAudio"></b></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <label for="order">Orden Médica</label>
+                            <a id="thumbnailOrderAudio" href="#" class="thumbnailOrderAudio">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                        <div class="wrapper-audio">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-end">
+                                    <h3 class="pull-right">Estado: <b id="record-status">Sin Iniciar</b></h3>
+                                    <br>
+                                    <section class="main-controls pull-right">
+                                        <canvas class="visualizer" height="60px" width="400px"></canvas>
+                                        <div id="buttons">
+                                            <button class="btn btn-warning resume">Pausar <i
+                                                class="fad fa-pause-circle fa-lg fa-fw"></i></button>
+                                            <button class="btn btn-success record">Grabar <i
+                                                class="fad fa-microphone fa-lg fa-fw"></i></button>
+                                            <button class="btn btn-danger stop">Detener <i
+                                                class="fad fa-stop-circle fa-lg fa-fw"></i></button>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="col-12 d-flex justify-content-end">
+                                    <section class="sound-clips mt-3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        <div class="card card-default">
+                            <div class="card-heading d-flex">
+                                <button type="button" id="btnSaveAudio" class="btn btn-primary py-2 px-3 rounded-right">
+                                    GUARDAR AUDIO
+                                </button>
+                                <button type="button" class="btn btn-danger pull-right py-2 px-3 ml-auto rounded"
+                                        data-dismiss="modal">Cerrar
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="zoom: 1.2;">
+                                    <p><strong>Dni :</strong> <span id="titleDniAudio"></span></p>
+                                    <p><strong>Paciente :</strong> <b id="titlePatientAudio"></b></p>
+                                    <p><strong>Edad : </strong><span id="titleAgeAudio"></span></p>
+                                    <p><strong>Género : </strong><span id="titleGenderAudio"></span></p>
+                                    <p><strong>Modalidad : </strong><span id="titleStudyModalityAudio"></span></p>
+                                    <p><strong>Descripción : </strong><span id="titleStudyDescAudio"></span></p>
+                                    <p><strong>Fecha Estudio : </strong><span id="titleStudyDateAudio"></span></p>
+                                    <p><strong>Nº Imágenes : </strong><span id="titleNumImagesAudio"></span></p>
+                                    <p><strong>EXÁMENES : </strong><span id="titleBenefitsAudio"></span></p>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="card card-body bg-dark">
+                                        <button type="button" id="btnReportAudio" class="btn btn-warning mt-2 mb-2">
+                                            INFORMAR
+                                        </button>
+                                        <h3>Anamnesis</h3>
+                                        <div class="border-dark-alpha" id="textAnamnesisAudio"></div>
+                                    </div>
+                                </div>
+                                <div id="previous-reports-containerAudio"
+                                     class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <br>
+                                    <h4>INFORMES PREVIOS</h4>
+                                    <div id="reports-controlAudio">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="alertReportUpload" class="alert alert-warning hidden">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                            <strong id="errorMessageText">Atención! Debe seleccionar al menos un archivo</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-order-audio">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="orderModalAudio" src="" class="img-responsive" alt="orden">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-qr">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body text-center" id="qrContent">
+                <h2 class="text-center">CÓDIGO QR</h2>
+                <div id="qr-image"></div>
+                <span>Escanea el código QR para acceder a las imágenes e informe(s) de su estudio.</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="$('#qrContent').printThis({importStyle: true});">Imprimir <i class="fas fa-print fa-lg"></i></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#extend "js"}}
+    <script type="text/javascript">
+        const credentials = JSON.parse('{{{ parseJson credentials}}}');
+        $studyChat = $('#chatBoxModal');
+    </script>
+    <script src="/public/global/js/printThis.js"></script>
+    <script src="/public/global/js/qrcode.min.js"></script>
+    <script src="/public/global/assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="/public/base/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script src="/public/base/js/plugins/forms/selects/select2.min.js"></script>
+    <script src="/public/base/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+    <script src="/public/base/js/plugins/tables/datatables/extensions/select.min.js"></script>
+    <script src="/public/base/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+    <script type="text/javascript" src="/tools/jQuery-contextMenu/dist/jquery.contextMenu.min.js "></script>
+    <script type="text/javascript" src="/public/global/js/datetime-moment.js"></script>
+    <script type="text/javascript" src="/tools/uniform/jquery.uniform.min.js "></script>
+    <script type="text/javascript" src="/tools/pnotify/dist/pnotify.js "></script>
+    <script type="text/javascript" src="/tools/select2/dist/js/select2.min.js "></script>
+    <script type="text/javascript" src="/public/assets/js/plugins/forms/styling/switch.min.js "></script>
+    <script type="text/javascript" src="/tools/bootstrap-multiselect/dist/js/bootstrap-multiselect.js "></script>
+    <script type="text/javascript" src="/public/global/js/extend_datatables.js"></script>
+
+    <script type="text/javascript" src="/tools/bootstrap-fileinput/js/plugins/piexif.min.js"></script>
+    <script type="text/javascript" src="/tools/bootstrap-fileinput/js/plugins/sortable.min.js"></script>
+    <script type="text/javascript" src="/tools/bootstrap-fileinput/js/plugins/purify.min.js"></script>
+    <script type="text/javascript" src="/tools/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="/tools/bootstrap-fileinput/themes/fa/theme.min.js"></script>
+    <script type="text/javascript" src="/tools/bootstrap-fileinput/js/locales/es.js"></script>
+
+    <script src="/public/app/studies/js/controller.js"></script>
+    <script>
+        const userAuth = globalCredentials.auth;
+        controller.loadDoctors();
+        const oviyamUrl = JSON.parse('{{{ parseJson oviyamUrl}}}');
+        const publicUrl = JSON.parse('{{{ parseJson publicUrl}}}');
+        const osirixName = JSON.parse('{{{ parseJson osirixName}}}');
+        const stateFilter = '{{{ stateFilter}}}';
+        const filter = JSON.parse('{{{ parseJson filter}}}' || '[]');
+        var uploadAudio;
+    </script>
+    <script src="/public/app/studies/js/record-audio.js"></script>
+    <script src="/public/app/studies/js/datatables.js"></script>
+    <script src="/public/app/studies/js/main.js"></script>
+{{/extend}}

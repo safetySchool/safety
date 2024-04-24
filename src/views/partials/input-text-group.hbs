@@ -1,0 +1,11 @@
+<label for="">{{label}}</label>
+<div class="input-group">
+    {{#if required}}
+        <input type="{{type}}" class="form-control" id="{{id}}" placeholder="{{place}}" {{required}}>
+    {{else}}
+        <input type="{{type}}" class="form-control" id="{{id}}" placeholder="{{place}}">
+    {{/if}}
+    <span class="input-group-addon">
+        <i class="fa {{fa}}" aria-hidden="true"></i>
+    </span>
+</div>

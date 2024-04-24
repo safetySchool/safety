@@ -1,0 +1,42 @@
+{{!< layout/default}}
+{{#extend "css"}}
+    <link href="/tools/datatables.net-select-dt/css/select.dataTables.min.css" rel="stylesheet" type="text/css">
+{{/extend}}
+{{#> modalbase id="crud-modal" modalclass="modal-lg" formClass="crud-form"}}
+    <html-inputs>
+        {{/modalbase}}
+        <div class="content">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><span class="text-semibold"><i class="fas fa-users"></i> MANTENEDOR</span> - %table-upper%</h4>
+                    <div class="heading-elements">
+                        <div class="heading-btn-group">
+                            <button id="btnAdd" type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> Nuevo</button>
+                            <button id="btnEdit" type="button" class="btn btn-warning" disabled><i class="fas fa-edit"></i> Editar</button>
+                            <button id="btnDelete" type="button" class="btn btn-danger" disabled><i class="fas fa-ban"></i> Borrar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    <table class="table datatable-responsive table-hover">
+                        <thead>
+                            <tr>
+                                %th-column%
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {{#extend "js"}}
+            <script type="text/javascript" src="/tools/datatables.net/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript" src="/tools/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+            <script type="text/javascript" src="/tools/datatables.net-select/js/dataTables.select.min.js"></script>
+            <script type="text/javascript" src="/public/global/js/extend_datatables.js"></script>
+            <script type="text/javascript" src="/tools/select2/dist/js/select2.min.js"></script>
+            <script type="text/javascript" src="/public/app/%table%/js/datatables.js"></script>
+            <script type="text/javascript" src="/public/app/%table%/js/controller.js"></script>
+            <script type="text/javascript" src="/public/app/%table%/js/main.js"></script>
+        {{/extend}}

@@ -1,0 +1,358 @@
+{{#extend "css"}}
+<link href="/tools/jQuery-contextMenu/dist/jquery.contextMenu.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/tools/bootstrap-fileinput/css/fileinput.min.css" />
+
+<style>
+    #qr-image {
+        padding: 16px;
+        display: flex;
+        justify-content: center;
+
+    }
+
+    #qr-image img {
+        margin: auto;
+        display: block;
+    }
+
+    .card-header {
+        cursor: pointer;
+    }
+</style>
+{{/extend}}
+<div class="page-header border-bottom-0">
+    <div class="page-header-content header-elements-md-inline">
+        <div class="page-title d-flex">
+            <h4><i class="fad fa-user"></i> <span class="font-weight-semibold">Institución</span>
+            </h4>
+            <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+        </div>
+    </div>
+</div>
+<div class="content pt-0">
+    <div class="card">
+        <div class="card-body card-body-theme">
+            <h5 class="card-title card-title-theme">Detalle Institución</h5>
+        </div>
+
+        <div class="row p-3">
+            <div class="col-12" id="institutionsList"></div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-crud" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">FORMULARIO DE INSTITUCIÓN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="crud-form">
+                    <div class="row mb-3">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h6 class="modal-title"> <i class="fas fa-angle-double-right"></i> ESTABLECIMIENTO</h6>
+                            <hr class="mt-1">
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="name">NOMBRE</label>
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Ingrese Nombre Institución" required>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="address">DIRECCIÓN</label>
+                                <input type="text" name="address" id="address" class="form-control"
+                                    placeholder="Ingrese Dirección">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="phone_number_institution">TELÉFONO</label>
+                                <input type="number" name="phone_number_institution" id="phone_number_institution"
+                                    class="form-control" placeholder="Ingrese Teléfono">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="email_institution">EMAIL ESTABLECIMIENTO</label>
+                                <input type="email" name="email_institution" id="email_institution" class="form-control"
+                                    placeholder="Ingrese Email">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="web_site">SITIO WEB</label>
+                                <input type="text" name="web_site" id="web_site" class="form-control"
+                                    placeholder="Ingrese Sitio Web">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="contact_name">DIRECTOR</label>
+                                <input type="text" name="contact_name" id="contact_name" class="form-control"
+                                    placeholder="Ingrese Nombre Completo Director">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="level">NIVEL</label>
+                                <select id="level" class="form-control select2" multiple required>
+                                    <option value="Educación Parvularia">Educación Parvularia</option>
+                                    <option value="Enseñanza Media Humanista-Científica">Enseñanza Media
+                                        Humanista-Científica</option>
+                                    <option value="Enseñanza Media Técnico-Profesional Comercial">Enseñanza Media
+                                        Técnico-Profesional Comercial
+                                    </option>
+                                    <option value="Educación Media T-P Adultos Comercial">Educación Media T-P Adultos
+                                        Comercial</option>
+                                    <option value="Enseñanza Media Técnico-Profesional Industrial">Enseñanza Media
+                                        Técnico-Profesional Industrial
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="supporter">SOSTENEDOR</label>
+                                <input type="text" name="supporter" id="supporter" placeholder="Ingrese Supporter"
+                                    class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="dependence">DEPENDENCIA</label>
+                                <select id="dependence" class="form-control select2" required>
+                                    <option value="Público">Público</option>
+                                    <option value="Particular">Particular</option>
+                                    <option value="Particular Subvencionado">Particular Subvencionado</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="maps_link">LINK GOOGLE MAPS</label>
+                                <input type="text" name="maps_link" id="maps_link" placeholder="Ingrese Link"
+                                    class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="students">CANTIDAD ALUMNOS</label>
+                                <input type="number" name="students" id="students" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label for="disability_students">CANTIDAD ALUMNOS DISCAPACIDAD</label>
+                                <input type="number" name="disability_students" id="disability_students"
+                                    class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field_wrapper_paternt_center">
+                        <div class="row mb-2">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+                                <h6 class="modal-title"> <i class="fas fa-angle-double-right"></i> CENTRO DE PADRES</h6>
+                                <hr class="mt-1">
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+                                <button type="button" class="btn btn-info add-parents-center" style="float: right;">
+                                    Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row parents-center-appened">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="name_parents_center">NOMBRE</label>
+                                    <input type="text" name="name_parents_center[]" class="form-control"
+                                        placeholder="Ingrese Nombre">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="phone_number_parents_center">TELÉFONO</label>
+                                    <input type="number" name="phone_number_parents_center[]" class="form-control"
+                                        placeholder="Ingrese Teléfono">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="email_parents_center">EMAIL</label>
+                                    <input type="email" name="email_parents_center[]" class="form-control"
+                                        placeholder="Ingrese Email">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="role_parents_center">ROL</label>
+                                    <input type="text" name="role_parents_center[]" class="form-control"
+                                        placeholder="Ingrese Rol">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="facebook_parents_center">FACEBOOK</label>
+                                    <input type="text" name="facebook_parents_center[]" class="form-control"
+                                        placeholder="Ingrese Facebook">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="instagram_parents_center">INSTAGRAM</label>
+                                    <input type="text" name="instagram_parents_center[]" class="form-control"
+                                        placeholder="Ingrese Instagram">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="linkedin_parents_center">LINKEDIN</label>
+                                    <input type="text" name="linkedin_parents_center[]" class="form-control"
+                                        placeholder="Ingrese Linkedin">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <button type="button" class="btn btn-danger drop-parents-center" style="float: right;">
+                                    Borrar </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field_wrapper_students_center">
+                        <div class="row mb-2">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+                                <h6 class="modal-title"> <i class="fas fa-angle-double-right"></i> CENTRO DE ALUMNOS
+                                </h6>
+                                <hr class="mt-1">
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+                                <button type="button" class="btn btn-info add-students-center" style="float: right;">
+                                    Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row students-center-appened">
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="name_students_center">NOMBRE</label>
+                                    <input type="text" name="name_students_center[]" class="form-control"
+                                        placeholder="Ingrese Nombre">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="phone_number_students_center">TELÉFONO</label>
+                                    <input type="number" name="phone_number_students_center[]" class="form-control"
+                                        placeholder="Ingrese Teléfono">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="email_students_center">EMAIL</label>
+                                    <input type="email" name="email_students_center[]" class="form-control"
+                                        placeholder="Ingrese Email">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label for="role_students_center">ROL</label>
+                                    <input type="text" name="role_students_center[]" class="form-control"
+                                        placeholder="Ingrese Rol">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="facebook_students_center">FACEBOOK</label>
+                                    <input type="text" name="facebook_students_center[]" class="form-control"
+                                        placeholder="Ingrese Facebook">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="instagram_students_center">INSTAGRAM</label>
+                                    <input type="text" name="instagram_students_center[]" class="form-control"
+                                        placeholder="Ingrese Instagram">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label for="linkedin_students_center">LINKEDIN</label>
+                                    <input type="text" name="linkedin_students_center[]" class="form-control"
+                                        placeholder="Ingrese Linkedin">
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <button type="button" class="btn btn-danger drop-students-center" style="float: right;">
+                                    Borrar </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button id="btnSave" type="button" class="btn btn-primary">Guardar</button>
+                <button id="btnUpdate" type="button" class="btn bg-warning d-none">Editar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{#extend "js"}}
+<script type="text/javascript" src="/tools/parsleyjs/dist/parsley.min.js"></script>
+<script type="text/javascript" src="/tools/parsleyjs/dist/i18n/es.js"></script>
+<script type="text/javascript" src="/public/base/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="/public/base/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript"
+    src="/public/base/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+<script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/select.min.js"></script>
+<script type="text/javascript" src="/public/base/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+<script type="text/javascript" src="/public/global/js/datetime-moment.js"></script>
+<script type="text/javascript" src="/tools/uniform/jquery.uniform.min.js "></script>
+<script type="text/javascript" src="/tools/pnotify/dist/pnotify.js "></script>
+<script type="text/javascript" src="/tools/select2/dist/js/select2.min.js "></script>
+<script type="text/javascript" src="/public/assets/js/plugins/forms/styling/switch.min.js "></script>
+<script type="text/javascript" src="/tools/bootstrap-multiselect/dist/js/bootstrap-multiselect.js "></script>
+<script type="text/javascript" src="/public/global/js/extend_datatables.js"></script>
+
+<script>let datatable;</script>
+
+<script type="text/javascript" src="/public/app/institution/js/controller.js"></script>
+<script type="text/javascript" src="/public/app/institution/js/main.js"></script>
+{{/extend}}

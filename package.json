@@ -1,0 +1,71 @@
+{
+    "name": "safety_school",
+    "version": "1.0.0",
+    "description": "Sistema de seguimiento de puntos de control para certificacíon de colegios",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js",
+        "dev": "NODE_ENV=dev node index.js",
+        "debug": "nodemon --inspect=0.0.0.0:9229 --ignore public/ index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://siarcarse@bitbucket.org/mediweb_dev/safety_school.git"
+    },
+    "keywords": [
+        "js"
+    ],
+    "author": "siarcarse",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://siarcarse@bitbucket.org/mediweb_dev/safety_school"
+    },
+    "homepage": "https://siarcarse@bitbucket.org/mediweb_dev/safety_school",
+    "dependencies": {
+        "@hapi/bell": "^12.3.0",
+        "@hapi/boom": "^9.1.4",
+        "@hapi/bounce": "^2.0.0",
+        "@hapi/h2o2": "9.1.0",
+        "@hapi/hapi": "^20.2.1",
+        "@hapi/hoek": "^9.2.1",
+        "@hapi/inert": "^6.0.4",
+        "@hapi/joi": "^16.1.7",
+        "@hapi/joi-date": "^2.0.1",
+        "@hapi/vision": "^6.1.0",
+        "bcryptjs": "^2.4.3",
+        "bluebird": "^3.7.2",
+        "cast-array": "^1.0.1",
+        "dotenv": "^10.0.0",
+        "form-data": "^4.0.0",
+        "glob": "^7.2.0",
+        "handlebars": "^4.7.7",
+        "handlebars-extend-block": "^1.0.0",
+        "hapi-auth-jwt2": "^10.2.0",
+        "hapi-cron": "^1.1.0",
+        "hapi-pino": "^8.5.0",
+        "html-to-text": "^8.0.0",
+        "joi-date-extensions": "^1.2.0",
+        "joi-objectid": "^4.0.2",
+        "json2csv": "^5.0.6",
+        "jsonwebtoken": "^8.5.1",
+        "lodash": "^4.17.21",
+        "mongoose": "^6.0.11",
+        "newrelic": "latest",
+        "node-fetch": "^2.6.5",
+        "nodemailer": "^6.7.0",
+        "pg": "^8.7.1",
+        "pg-hstore": "^2.3.4",
+        "redis": "^3.1.2",
+        "request": "^2.88.2",
+        "sequelize": "^6.7.0",
+        "shelljs": "^0.8.4",
+        "socket.io": "^4.3.1",
+        "socket.io-redis": "^6.1.1",
+        "uuid": "^3.4.0",
+        "xlsx": "^0.18.5"
+    },
+    "devDependencies": {
+        "js-beautify": "^1.14.0",
+        "nodemon": "^2.0.22"
+    }
+}

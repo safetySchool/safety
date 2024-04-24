@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>..:: SAFETY SCHOOL ::..</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+        type="text/css">
+    <link href="/public/base/css/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/assets/css/layout.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/assets/css/components.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/assets/css/colors.min.css" rel="stylesheet" type="text/css">
+    <link href="/public/assets/css/default.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/public/global/assets/sweetalert2/dist/sweetalert2.min.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.1/css/all.css"
+        integrity="sha384-TxKWSXbsweFt0o2WqfkfJRRNVaPdzXJ/YLqgStggBVRREXkwU7OKz+xXtqOU4u8+" crossorigin="anonymous">
+    <!-- /global stylesheets -->
+    <!-- /theme JS files -->
+    {{{block "css"}}}
+
+</head>
+
+<body>
+    {{> header}}
+    <div class="page-content">
+        {{> sidebar}}
+        <div class="content-wrapper">
+            <div id="divLoading" class="divLoading d-none">
+                <i class="fas fa-spinner fa-4x fa-spin"></i>
+            </div>
+            {{>password-module}}
+            <br> {{{content}}}
+        </div>
+    </div>
+    <!-- Core JS files -->
+    <script type="text/javascript ">
+    const globalCredentials = JSON.parse('{{{ parseJson credentials }}}');
+</script>
+    <!-- Core JS files -->
+    <script type="text/javascript" src="/public/assets/js/app.js"></script>
+    <script type="text/javascript" src="/public/base/js/main/jquery.min.js"></script>
+    <script type="text/javascript" src="/public/global/js/dayjs/dayjs.js"></script>
+    <script type="text/javascript" src="/public/global/js/dayjs/locale.es.js"></script>
+    <script type="text/javascript" src="/public/base/js/main/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/public/base/js/plugins/loaders/blockui.min.js"></script>
+    <script type="text/javascript" src="/public/global/assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="/tools/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/tools/moment/min/locales.min.js"></script>
+    <!-- /core JS files -->
+    <script type="text/javascript" src="/tools/bluebird/js/browser/bluebird.min.js"></script>
+
+    <script type="text/javascript" src="/public/global/assets/dayjs/dayjs.min.js"></script>
+    <script type="text/javascript" src="/public/global/assets/dayjs/locale/es.js"></script>
+    <script type="text/javascript" src="/public/global/assets/dayjs/plugin/utc.js"></script>
+    <script type="text/javascript" src="/tools/remarkable-bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="/public/global/js/main.js"></script>
+    <script type="text/javascript" src="/public/global/js/default.js"></script>
+    <!-- /core JS files -->
+    {{{block "js"}}}
+
+    {{!-- active nav-item by url 01/03/2024 nb --}}
+    <script>
+        const currentUrl = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-item a');
+
+        navLinks.forEach(function (navLink) {
+            navLink.getAttribute('href') === currentUrl && navLink.classList.add('active');
+        });
+    </script>
+</body>
+
+</html>

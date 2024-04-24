@@ -1,0 +1,10 @@
+.accountbg {
+  background: url("/public/app/login/images/bg.jpg");
+  position: absolute;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}

@@ -1,0 +1,15 @@
+<div class="modal {{fullscreen}} fade" id="modal-{{modalname}}">
+    <div class="modal-dialog {{modalclass}}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h5 class="modal-title">
+                    <strong> { codePACS| } / {{title}}</strong>
+                </h5>
+            </div>
+            <div class="modal-body">
+                {{> @partial-block }}
+            </div>
+        </div>
+    </div>
+</div>
